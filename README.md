@@ -1,2 +1,2 @@
 # autograder
-This is an automated grader to evaluate the student grades.
+This is an automated grader that evaluates students' grades.
