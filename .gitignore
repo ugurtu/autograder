@@ -3,6 +3,17 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Specific
+*.csv
+*.png
+*.txt
+/tests
+asserts.py
+/grades_raw
+/feedback_*
+/Abgaben
+/.idea
+*.OTTER_LOG
 # C extensions
 *.so
 
