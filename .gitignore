@@ -14,6 +14,7 @@ asserts.py
 /Abgaben
 /.idea
 *.OTTER_LOG
+*.xls
 # C extensions
 *.so
 
