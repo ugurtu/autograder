@@ -9,9 +9,8 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import Select
 
 
-base_url = "https://adam.unibas.ch/goto_adam_"
-coursepage = "https://adam.unibas.ch/goto_adam_crs_1688235.html"
-
+coursepage = "https://adam.unibas.ch/goto_adam_crs_1688235.html" # TODO: specify ADAM coursesite
+download_path = "/home/josph/Downloads/" # TODO: adjust downloadpath of selenium firefox browser
 
 
 def main(argv):
@@ -25,7 +24,7 @@ def main(argv):
         sys.exit(1)
 
     url = coursepage
-    target_id = url.replace(base_url, "").replace(".html", "")
+    target_id = url.replace("https://adam.unibas.ch/goto_adam_", "").replace(".html", "")
 
     # automate ADAM access
     driver = webdriver.Firefox()
@@ -85,7 +84,7 @@ def main(argv):
     button.click()
 
     # move downloaded zip file into current directory
-    source_path = '/home/josph/Downloads/Exercise sheet ' + str(nr) + '.zip'
+    source_path = download_path + 'Exercise sheet ' + str(nr) + '.zip'
     destination_directory = os.getcwd()  # Get the current working directory
     destination_path = os.path.join(destination_directory, 'Exercise sheet ' + str(nr) + '.zip')
     shutil.move(source_path, destination_path)
@@ -93,6 +92,7 @@ def main(argv):
     # unpack zip in current directory and delete zip
     # Specify the name of the ZIP file
     zip_file_name = 'Exercise sheet ' + str(nr) + '.zip'
+    print(f"Extracted all contents of {zip_file_name} to the current directory.")
 
     # Ensure the ZIP file exists
     if os.path.exists(zip_file_name):
