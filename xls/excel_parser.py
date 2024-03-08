@@ -1,7 +1,11 @@
 import pandas as pd
 import os
 
+__author__ = "Ugur Turhal","Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
+
 class ExcelParser:
+
 
     def __init__(self):
         self.file_path = "../xls/exercise-and-insurance-points.xls"
@@ -12,7 +16,7 @@ class ExcelParser:
         return data
 
     """
-    This merges the data of analysis.py namely:
+    This merges the data of insurance_analysis.py namely:
     caalculated_points.csv and data from the excel file.
     If E-mail is present in both files, the data is merged.
     If not present, then it is just NaN. It gives a new xls file.
@@ -20,7 +24,7 @@ class ExcelParser:
     """
 
     def merge_data(self):
-        data2 = pd.read_csv('../analysis/calculated_points.csv')
+        data2 = pd.read_csv('../insurance_analysis/calculated_points.csv')
         data2 = data2[["E-Mail", "Points_Total"]]
         merged_df = pd.merge(self.get_data(), data2, on="E-Mail", how="left")
 
