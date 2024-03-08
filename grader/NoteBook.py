@@ -1,10 +1,12 @@
 import os
 
 """
-This is a class. 
+__author__ = "Ugur Turhal","Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
+
+This is a class. To get the notebooks. This must downloaded from Adam.
+And unpacked in the autograder directory.
 It will be used to grade the students' assignments.
-__author__ = "Ugur Turhal","Mark Stranzky"
-__email__ = "ugur.turhal@unibas.ch","mark.stranzky@unibas.ch"
 """
 
 

@@ -4,7 +4,16 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import time
+from xls.excel_parser import ExcelParser
 
+"""
+__author__ = "Ugur Turhal","Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
+
+This is a class. To get the notebooks. This must downloaded from Adam.
+And unpacked in the autograder directory.
+It will be used to grade the students' assignments.
+"""
 
 def get_data():
     os.chdir("..")
@@ -34,7 +43,10 @@ def make_hist(data):
     # Set custom x-axis label
     ax.set_xlabel('Bonus Points')
     ax.set_ylabel('Number of Students')
-    sns.barplot(data['Points_Total'].value_counts(), ax=ax, alpha=0.8)
+    # TODO: Change every Time to IP1, IP2, IP3 and so on.
+    # Maybe change later that we can choose the column later
+    
+    sns.barplot(data['IP1'].value_counts(), ax=ax, alpha=0.8)
     plt.title('Statistics')
     plt.gca().xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: '{:.3f}'.format(x / 3)))
     plt.savefig('histogram.png')
@@ -46,4 +58,4 @@ if __name__ == '__main__':
     data = compute_sum(data)
     data = compute_bonus(data)
     data_to_csv(data)
-    make_hist(data)
+    make_hist(ExcelParser().merge_data())

@@ -32,7 +32,7 @@ class NoteBookGrader:
             writer = csv.writer(csvfile)
 
             # Write header row
-            header_row = ['Family Name', 'Name', 'E-mail', 'Adam-Number', 'Question 1', 'Question 2', 'Question 3']
+            header_row = ['Family Name', 'Name', 'E-Mail', 'Adam-Number', 'Question 1', 'Question 2', 'Question 3']
             writer.writerow(header_row)
 
             # Iterate over each notebook
@@ -88,8 +88,8 @@ class NoteBookGrader:
                                 notebook_grades.append(1)
                             else:
                                 notebook_grades.append(0)
+
                 # print("Correction Done", name, family_name, student_email, matriculation_number)
                 # Write the row for this notebook to the CSV file
-                os.chdir("grades_raw")
                 writer.writerow(notebook_grades)
                 os.chdir(current_directory)
