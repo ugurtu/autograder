@@ -14,9 +14,9 @@ This is an automated downloader collecting a specific exercise from a specific c
   - start virtual environment:
     - 'cd autograder'
     - 'source venv/bin/activate'
-  - 'python adam.py -u <USERNAME> -p <PASSWORD> -n <EX-NR>'
+  - 'python adam.py -u USERNAME -p PASSWORD -n EXERCISENR'
     - optional args: coursesite, mode, ..., for help see 'python adam.py -h'
-    - This script logs in and joins the default course page on ADAM and downloads all hand-ins from given exercise as zip file. It then unpacks and moves the hand-ins to the 'autograder/' directory as '<EXERCISE-NAME>/Abgaben/...'.
+    - This script logs in and joins the default course page on ADAM and downloads all hand-ins from given exercise as zip file. It then unpacks and moves the hand-ins to the 'autograder/' directory as 'EXERCISENAME/Abgaben/...'.
 
 
 
