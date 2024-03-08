@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import time
 from xls.excel_parser import ExcelParser
 
-"""
 __author__ = "Ugur Turhal","Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
 
+"""
 This is a class. To get the notebooks. This must downloaded from Adam.
 And unpacked in the autograder directory.
 It will be used to grade the students' assignments.
@@ -32,7 +32,7 @@ def compute_bonus(data):
 
 
 def data_to_csv(data):
-    os.chdir("analysis")
+    os.chdir("insurance_analysis")
     data.to_csv('calculated_points.csv', index=False)
 
 

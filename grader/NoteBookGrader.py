@@ -4,11 +4,12 @@ import re
 import os
 import time
 
+__author__ = "Ugur Turhal", "Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
+
 """
 This is the NoteBookGrader class.
 It will be used to grade the students' assignments.
-__author__ = "Ugur Turhal","Mark Stranzky"
-__email__ = "ugur.turhal@unibas.ch","mark.stranzky@unibas.ch"
 """
 
 
@@ -18,21 +19,28 @@ class NoteBookGrader:
     """
 
     def __init__(self, notebooks):
-        self.output_csv_file = 'grades_raw_'+time.strftime("%y%m%d")+".csv"
+        self.output_csv_file = 'grades_raw_' + time.strftime("%y%m%d") + ".csv"
         self.notebooks = notebooks
+        self.tests = 'tests/'
+        self.number_of_questions = 0
 
     @staticmethod
     def create_feedback_folder():
-        if not os.path.exists("feedback_"+time.strftime("%y%m%d")):
-            os.makedirs("feedback_"+time.strftime("%y%m%d"))
+        if not os.path.exists("feedback_" + time.strftime("%y%m%d")):
+            os.makedirs("feedback_" + time.strftime("%y%m%d"))
 
     def grade_notebooks(self):
         self.create_feedback_folder()
         with open(self.output_csv_file, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
-
+            num_files = len(
+                [filename for filename in os.listdir(self.tests) if os.path.isfile(os.path.join(self.tests, filename))])
+            self.number_of_questions = num_files
             # Write header row
-            header_row = ['Family Name', 'Name', 'E-Mail', 'Adam-Number', 'Question 1', 'Question 2', 'Question 3']
+            header_row = ['Family Name', 'Name', 'E-Mail', 'Adam-Number']
+            for i in range(1, num_files + 1):
+                header_row.append(f'Question {i}')
+
             writer.writerow(header_row)
 
             # Iterate over each notebook
@@ -63,7 +71,7 @@ class NoteBookGrader:
                 output = subprocess.check_output(command, shell=True, encoding='utf-8')
                 current_directory = os.getcwd()
 
-                os.chdir("feedback_"+time.strftime("%y%m%d"))
+                os.chdir("feedback_" + time.strftime("%y%m%d"))
                 f = open(student_email + "_feedback.txt", "w+")
                 f.write(output)
                 f.close()
@@ -71,7 +79,7 @@ class NoteBookGrader:
                 os.chdir(current_directory)
 
                 # Extract the grade from the output for each question
-                for i in range(1, 4):
+                for i in range(1, self.number_of_questions + 1):
                     pattern_failed = fr'Question {i} - \d+ result:\s+❌ Test case failed.+'
                     match_failed = re.search(pattern_failed, output)
                     if match_failed:
