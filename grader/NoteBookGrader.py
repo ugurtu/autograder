@@ -43,8 +43,12 @@ class NoteBookGrader:
 
             writer.writerow(header_row)
 
+            counter = 1
+
             # Iterate over each notebook
             for notebook in self.notebooks:
+                print(f"Starting grading on Notebook {counter} out of {len(self.notebooks)}...")
+                counter += 1
 
                 folder_name = os.path.basename(os.path.dirname(notebook))
                 name, family_name, student_email, matriculation_number = "", "", "", ""
