@@ -19,17 +19,22 @@ class NoteBookGrader:
     This will grade the notebooks
     """
 
-    def __init__(self, notebooks):
+    def __init__(self, notebooks, mode):
+        self.mode = mode
         self.notebooks = notebooks
         self.tests = 'tests'
         self.number_of_questions = 0
         self.exercise_number = NumberOfExercise().get_number_of_exercise()
         self.output_csv_file = time.strftime("%y%m%d") + f'_CSV_Grades_Exercise_{self.exercise_number}' + ".csv"
 
-    @staticmethod
-    def create_feedback_folder():
-        if not os.path.exists(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}"):
-            os.makedirs(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}")
+    def create_feedback_folder(self):
+        if self.mode == "-e":
+            if not os.path.exists(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}"):
+                os.makedirs(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}")
+
+        elif self.mode == "-i":
+            if not os.path.exists(f"Feedback_Insurance {NumberOfExercise().get_number_of_exercise()}"):
+                os.makedirs(f"Feedback_Insurance {NumberOfExercise().get_number_of_exercise()}")
 
     def grade_notebooks(self):
         self.create_feedback_folder()
@@ -82,7 +87,7 @@ class NoteBookGrader:
                 f.write(output)
                 f.close()
                 # Change the directory back to the original directory
-                #os.chdir(current_directory)
+                # os.chdir(current_directory)
 
                 # Extract the grade from the output for each question
                 for i in range(1, self.number_of_questions + 1):

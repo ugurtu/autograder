@@ -16,7 +16,7 @@ def main():
     notebooks = NoteBook(args)
     notebooks = notebooks.find_notebooks()
 
-    grader = NoteBookGrader(notebooks)
+    grader = NoteBookGrader(notebooks, args)
     grader.grade_notebooks()
 
 
