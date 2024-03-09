@@ -1,4 +1,5 @@
 import os
+from exercise_number.number_of_exercise import NumberOfExercise
 
 """
 __author__ = "Ugur Turhal","Mark Starzynski"
@@ -16,7 +17,8 @@ class NoteBook:
     """
 
     def __init__(self):
-        self.main_directory = 'Abgaben'
+        self.exercise_number = NumberOfExercise().get_number_of_exercise()
+        self.main_directory = f'Exercise sheet {self.exercise_number}/Abgaben'
 
     """
     This function finds all notebooks in subdirectories.

@@ -21,7 +21,7 @@ class NoteBookGrader:
     def __init__(self, notebooks):
         self.output_csv_file = 'grades_raw_' + time.strftime("%y%m%d") + ".csv"
         self.notebooks = notebooks
-        self.tests = 'tests/'
+        self.tests = 'tests'
         self.number_of_questions = 0
 
     @staticmethod
