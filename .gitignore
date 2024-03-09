@@ -10,7 +10,7 @@ __pycache__/
 /tests
 asserts.py
 /grades_raw
-/feedback_*
+/Feedback_*
 /Abgaben
 /.idea
 *.OTTER_LOG
