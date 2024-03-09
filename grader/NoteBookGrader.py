@@ -24,7 +24,7 @@ class NoteBookGrader:
         self.tests = 'tests'
         self.number_of_questions = 0
         self.exercise_number = NumberOfExercise().get_number_of_exercise()
-        self.output_csv_file = time.strftime("%y%m%d") + f'CSV_Grades_Exercise_{self.exercise_number}' + ".csv"
+        self.output_csv_file = time.strftime("%y%m%d") + f'_CSV_Grades_Exercise_{self.exercise_number}' + ".csv"
 
     @staticmethod
     def create_feedback_folder():

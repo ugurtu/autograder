@@ -11,7 +11,7 @@ __pycache__/
 asserts.py
 /grades_raw
 /Feedback_*
-/Abgaben
+/Exercise\ *
 /.idea
 *.OTTER_LOG
 *.xls
