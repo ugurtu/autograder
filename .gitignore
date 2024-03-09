@@ -16,6 +16,8 @@ asserts.py
 *.OTTER_LOG
 *.xls
 *.xlsx
+/Insurance\ *
+
 # C extensions
 *.so
 

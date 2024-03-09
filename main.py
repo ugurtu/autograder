@@ -21,12 +21,11 @@ def main():
 
 
 def parse_args():
-
     try:
         if sys.argv[1] not in ["-e", "-i"]:
             print("Please specify the mode with -e or -i. -e for exercise and -i for insurance.")
         else:
-            return sys.argv[1]
+            return sys.argv[1:3]
 
     except Exception as e:
         print(f"Error parsing arguments: {e}")

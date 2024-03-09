@@ -1,9 +1,10 @@
+import shutil
 import subprocess
 import csv
 import re
 import os
 import time
-from exercise_number_calculator.number_of_exercise import NumberOfExercise
+from insurance_analysis import InsuranceAnalysis
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -20,24 +21,29 @@ class NoteBookGrader:
     """
 
     def __init__(self, notebooks, mode):
-        self.mode = mode
+        self.mode = mode[0]
         self.notebooks = notebooks
         self.tests = 'tests'
         self.number_of_questions = 0
-        self.exercise_number = NumberOfExercise().get_number_of_exercise()
-        self.output_csv_file = time.strftime("%y%m%d") + f'_CSV_Grades_Exercise_{self.exercise_number}' + ".csv"
+        self.exercise_number = mode[1]
+        if self.mode == "-e":
+            self.output_csv_file = time.strftime("%y%m%d") + f'_CSV_Grades_Exercise_{self.exercise_number}' + ".csv"
+        elif self.mode == "-i":
+            self.output_csv_file = time.strftime("%y%m%d") + f'_CSV_Grades_Insurance_{self.exercise_number}' + ".csv"
+
 
     def create_feedback_folder(self):
         if self.mode == "-e":
-            if not os.path.exists(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}"):
-                os.makedirs(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}")
+            if not os.path.exists(f"Feedback_Exercise {self.exercise_number}"):
+                os.makedirs(f"Feedback_Exercise {self.exercise_number}")
 
         elif self.mode == "-i":
-            if not os.path.exists(f"Feedback_Insurance {NumberOfExercise().get_number_of_exercise()}"):
-                os.makedirs(f"Feedback_Insurance {NumberOfExercise().get_number_of_exercise()}")
+            if not os.path.exists(f"Feedback_Insurance {self.exercise_number}"):
+                os.makedirs(f"Feedback_Insurance {self.exercise_number}")
 
     def grade_notebooks(self):
         self.create_feedback_folder()
+
         with open(self.output_csv_file, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             num_files = len(
@@ -82,7 +88,11 @@ class NoteBookGrader:
                 output = subprocess.check_output(command, shell=True, encoding='utf-8')
                 current_directory = os.getcwd()
 
-                os.chdir(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}")
+                if self.mode == "-e":
+                    os.chdir(f"Feedback_Exercise {self.exercise_number}")
+                elif self.mode == "-i":
+                    os.chdir(f"Feedback_Insurance {self.exercise_number}")
+
                 f = open(student_email + "_feedback.txt", "w+")
                 f.write(output)
                 f.close()
@@ -112,3 +122,13 @@ class NoteBookGrader:
                 # Write the row for this notebook to the CSV file
                 writer.writerow(notebook_grades)
                 os.chdir(current_directory)
+
+        if self.mode == "-e":
+            shutil.move("../autograder/" + self.output_csv_file, f"exercise_analysis/{self.output_csv_file}")
+
+        elif self.mode == "-i":
+            shutil.move("../autograder/" + self.output_csv_file, f"insurance_analysis/{self.output_csv_file}")
+            analysis = InsuranceAnalysis.InsuranceAnalysis(self.exercise_number, self.output_csv_file)
+            analysis.get_data()
+            print("Analysis Done")
+        os.remove(".OTTER.LOG")

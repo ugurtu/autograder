@@ -1,11 +1,11 @@
 import pandas as pd
 import os
 
-__author__ = "Ugur Turhal","Mark Starzynski"
-__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
+__author__ = "Ugur Turhal", "Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
+
 
 class ExcelParser:
-
 
     def __init__(self):
         self.file_path = "../xls/exercise-and-insurance-points.xls"
@@ -32,7 +32,7 @@ class ExcelParser:
         merged_df["Points_Total"].fillna(0, inplace=True)
         # TODO: Change every Time to IP1, IP2, IP3 and so on.
 
-        merged_df["IP1"] =merged_df["Points_Total"]
+        merged_df["IP1"] = merged_df["Points_Total"]
 
         merged_df = merged_df.drop('Points_Total', axis=1)
         # If you want to sum Total Points from CSV and Excel files, uncomment the following line
@@ -41,4 +41,3 @@ class ExcelParser:
         merged_df.to_excel("merged_data.xlsx", index=False)
 
         return merged_df
-
