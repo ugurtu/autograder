@@ -1,5 +1,5 @@
 import os
-from exercise_number.number_of_exercise import NumberOfExercise
+from exercise_number_calculator.number_of_exercise import NumberOfExercise
 
 """
 __author__ = "Ugur Turhal","Mark Starzynski"
@@ -16,9 +16,13 @@ class NoteBook:
     This class will be used to grade the students' assignments.
     """
 
-    def __init__(self):
+    def __init__(self,arg):
         self.exercise_number = NumberOfExercise().get_number_of_exercise()
-        self.main_directory = f'Exercise sheet {self.exercise_number}/Abgaben'
+        if arg == "-e":
+            self.main_directory = f'Exercise sheet {self.exercise_number}/Abgaben'
+        elif arg == "-i":
+            # This is for the insurance the number of the exercise is the same as the insurance number
+            self.main_directory = f'Insurance {self.exercise_number}/Abgaben'
 
     """
     This function finds all notebooks in subdirectories.

@@ -37,7 +37,3 @@ class NumberOfExercise:
         elif self.timedelta.days < 70:
             return 10
 
-
-
-m = NumberOfExercise()
-print(m.get_number_of_exercise())

@@ -3,6 +3,7 @@ import csv
 import re
 import os
 import time
+from exercise_number_calculator.number_of_exercise import NumberOfExercise
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -19,15 +20,16 @@ class NoteBookGrader:
     """
 
     def __init__(self, notebooks):
-        self.output_csv_file = 'grades_raw_' + time.strftime("%y%m%d") + ".csv"
         self.notebooks = notebooks
         self.tests = 'tests'
         self.number_of_questions = 0
+        self.exercise_number = NumberOfExercise().get_number_of_exercise()
+        self.output_csv_file = time.strftime("%y%m%d") + f'CSV_Grades_Exercise_{self.exercise_number}' + ".csv"
 
     @staticmethod
     def create_feedback_folder():
-        if not os.path.exists("feedback_" + time.strftime("%y%m%d")):
-            os.makedirs("feedback_" + time.strftime("%y%m%d"))
+        if not os.path.exists(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}"):
+            os.makedirs(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}")
 
     def grade_notebooks(self):
         self.create_feedback_folder()
@@ -75,12 +77,12 @@ class NoteBookGrader:
                 output = subprocess.check_output(command, shell=True, encoding='utf-8')
                 current_directory = os.getcwd()
 
-                os.chdir("feedback_" + time.strftime("%y%m%d"))
+                os.chdir(f"Feedback_Exercise {NumberOfExercise().get_number_of_exercise()}")
                 f = open(student_email + "_feedback.txt", "w+")
                 f.write(output)
                 f.close()
                 # Change the directory back to the original directory
-                os.chdir(current_directory)
+                #os.chdir(current_directory)
 
                 # Extract the grade from the output for each question
                 for i in range(1, self.number_of_questions + 1):
