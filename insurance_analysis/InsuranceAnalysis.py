@@ -2,8 +2,6 @@ import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import time
-from xls.excel_parser import ExcelParser
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -17,8 +15,8 @@ It will be used to grade the students' assignments.
 
 class InsuranceAnalysis:
 
-    def __init__(self, exercise_number, file_name):
-        directory = "insurance_analysis"
+    def __init__(self, exercise_number, file_name, directory):
+        self.directory = f'{directory}'
         self.filename = file_name
         self.exercise_number = exercise_number
         self.file_path = f"{directory}"
@@ -29,24 +27,23 @@ class InsuranceAnalysis:
         self.compute_sum(data)
         self.compute_bonus(data)
         self.data_to_csv(data)
-        self.make_hist(data)
 
     def compute_sum(self, data):
         data['Points_Total'] = data['Question 1'] + data['Question 2'] + data['Question 3']
         return data
 
     def compute_bonus(self, data):
-        data[f'IP{self.exercise_number}'] = data['Points_Total'] / 3
+        data[f'IP{self.exercise_number}_calc'] = data['Points_Total'] / 3
         return data
 
     def data_to_csv(self, data):
         os.chdir("../insurance_analysis")
         data.to_csv(f'Insurance_{self.exercise_number}_Results.csv', index=False)
 
-    def make_hist(self, data):
+    def make_hist(self):
+        data = pd.read_excel(f'../xls/Insurance_{self.exercise_number}_Results.xlsx')
         sns.set_theme(style="darkgrid")
         ax = plt.gca()
-
         # Set custom x-axis label
         ax.set_xlabel('Bonus Points')
         ax.set_ylabel('Number of Students')

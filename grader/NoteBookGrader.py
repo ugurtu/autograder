@@ -5,6 +5,7 @@ import re
 import os
 import time
 from insurance_analysis import InsuranceAnalysis
+from xls.ExcelParser import ExcelParser
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -30,7 +31,6 @@ class NoteBookGrader:
             self.output_csv_file = time.strftime("%y%m%d") + f'_CSV_Grades_Exercise_{self.exercise_number}' + ".csv"
         elif self.mode == "-i":
             self.output_csv_file = time.strftime("%y%m%d") + f'_CSV_Grades_Insurance_{self.exercise_number}' + ".csv"
-
 
     def create_feedback_folder(self):
         if self.mode == "-e":
@@ -128,7 +128,9 @@ class NoteBookGrader:
 
         elif self.mode == "-i":
             shutil.move("../autograder/" + self.output_csv_file, f"insurance_analysis/{self.output_csv_file}")
-            analysis = InsuranceAnalysis.InsuranceAnalysis(self.exercise_number, self.output_csv_file)
+            analysis = InsuranceAnalysis.InsuranceAnalysis(self.exercise_number, self.output_csv_file,
+                                                           f"insurance_analysis")
             analysis.get_data()
-            print("Analysis Done")
-        os.remove(".OTTER.LOG")
+            excel_parser = ExcelParser("Insurance", self.exercise_number, self.mode)
+            excel_parser.merge_data()
+            analysis.make_hist()
