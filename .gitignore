@@ -10,6 +10,8 @@ __pycache__/
 /tests
 asserts.py
 /grades_raw
+analysis/Insurance_Analysis/
+analysis/Exercise_Analysis/
 /Feedback_*
 /Exercise\ *
 /.idea

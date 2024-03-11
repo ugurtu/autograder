@@ -4,8 +4,9 @@ import csv
 import re
 import os
 import time
-from insurance_analysis import InsuranceAnalysis
+from analysis.Analysis import InsuranceAnalysis
 from xls.ExcelParser import ExcelParser
+from points_parser.PointParser import PointParser
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -27,6 +28,7 @@ class NoteBookGrader:
         self.tests = 'tests'
         self.number_of_questions = 0
         self.exercise_number = mode[1]
+        self.question_points = {}
         if self.mode == "-e":
             self.output_csv_file = time.strftime("%y%m%d") + f'_CSV_Grades_Exercise_{self.exercise_number}' + ".csv"
         elif self.mode == "-i":
@@ -51,9 +53,16 @@ class NoteBookGrader:
             self.number_of_questions = num_files
             # Write header row
             header_row = ['Family Name', 'Name', 'E-Mail', 'Adam-Number']
+
+            """
+            Parse the points here we use the class
+            PointParser. Then iterate through a 
+            """
+            point = PointParser()
             for i in range(1, num_files + 1):
                 header_row.append(f'Question {i}')
-
+                self.question_points[f"Question {i}"] = point.question_parser(i)
+            print(self.question_points)
             writer.writerow(header_row)
 
             counter = 1
@@ -108,13 +117,16 @@ class NoteBookGrader:
                     else:
                         # Check if "All tests passed!" pattern is found
                         if "All tests passed!" in output:
-                            notebook_grades.append(1)
+
+                            points = self.question_points[f'Question {i}']
+                            notebook_grades.append(points)
                         else:
                             # Check if specific question pattern is found
                             pattern_passed = fr'Question {i} results: All test cases passed!'
                             match_passed = re.search(pattern_passed, output)
                             if match_passed:
-                                notebook_grades.append(1)
+                                points = self.question_points[f'Question {i}']
+                                notebook_grades.append(points)
                             else:
                                 notebook_grades.append(0)
 
@@ -124,13 +136,64 @@ class NoteBookGrader:
                 os.chdir(current_directory)
 
         if self.mode == "-e":
-            shutil.move("../autograder/" + self.output_csv_file, f"exercise_analysis/{self.output_csv_file}")
+            cwd = os.getcwd()
+            """
+            Create Subdirectory for every Exercise assignment
+            """
+            if os.path.exists(f"../autograder/analysis/Exercise_Analysis_{self.exercise_number}"):
+                shutil.rmtree(f"../autograder/analysis/Exercise_Analysis_{self.exercise_number}")
+
+            os.chdir("../autograder/analysis")
+            os.mkdir(f"Exercise_Analysis_{self.exercise_number}")
+            os.chdir(cwd)
+
+            """
+            Move the Output to the specific folder.
+            """
+            shutil.move("../autograder/" + self.output_csv_file,
+                        f"analysis/Exercise_Analysis_{self.exercise_number}/{self.output_csv_file}")
+
+            shutil.move(f"Feedback_Exercise {self.exercise_number}",
+                        f"../autograder/analysis/Exercise_Analysis_{self.exercise_number}")
+
+            analysis = InsuranceAnalysis(self.exercise_number, self.output_csv_file,
+                                         "-e", self.number_of_questions)
+            analysis.get_data()
+
+            """
+            Parse the data
+            """
+            excel_parser = ExcelParser("Exercises", self.exercise_number, self.mode)
+            excel_parser.merge_data()
+
+            analysis.exercise_evaluation()
 
         elif self.mode == "-i":
-            shutil.move("../autograder/" + self.output_csv_file, f"insurance_analysis/{self.output_csv_file}")
-            analysis = InsuranceAnalysis.InsuranceAnalysis(self.exercise_number, self.output_csv_file,
-                                                           f"insurance_analysis")
+            cwd = os.getcwd()
+            """
+            Create Subdirectory for every insurance assignment
+            
+            """
+            if os.path.exists(f"../autograder/analysis/Insurance_Analysis_{self.exercise_number}"):
+                shutil.rmtree(f"../autograder/analysis/Insurance_Analysis_{self.exercise_number}")
+
+            os.chdir("../autograder/analysis")
+            os.mkdir(f"Insurance_Analysis_{self.exercise_number}")
+            os.chdir(cwd)
+
+            """
+            Move the Output to the specific folder.
+            """
+            shutil.move("../autograder/" + self.output_csv_file,
+                        f"analysis/Insurance_Analysis_{self.exercise_number}/{self.output_csv_file}")
+            shutil.move(f"Feedback_Insurance {self.exercise_number}",
+                        f"../autograder/analysis/Insurance_Analysis_{self.exercise_number}")
+
+            analysis = InsuranceAnalysis(self.exercise_number, self.output_csv_file,
+                                         "-i", self.number_of_questions)
             analysis.get_data()
+
             excel_parser = ExcelParser("Insurance", self.exercise_number, self.mode)
             excel_parser.merge_data()
+
             analysis.make_hist()
