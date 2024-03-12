@@ -1,5 +1,6 @@
 import os
 
+
 """
 __author__ = "Ugur Turhal","Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
@@ -15,8 +16,15 @@ class NoteBook:
     This class will be used to grade the students' assignments.
     """
 
-    def __init__(self):
-        self.main_directory = 'Abgaben'
+    def __init__(self, arg):
+        # arg[0] is the mode -e or -i
+        # arg[1] is the exercise number or insurance number
+        self.exercise_number = arg[1]
+        if arg[0] == "-e":
+            self.main_directory = f'Exercise sheet {self.exercise_number}/Abgaben'
+        elif arg[0] == "-i":
+            # This is for the insurance the number of the exercise is the same as the insurance number
+            self.main_directory = f'Insurance {self.exercise_number}/Abgaben'
 
     """
     This function finds all notebooks in subdirectories.
