@@ -88,7 +88,7 @@ class InsuranceAnalysis:
         plt.title('Statistics')
         plt.gca().xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: '{:.3f}'.format(x / 3)))
         plt.savefig(f'analysis/Insurance_Analysis_{self.exercise_number}/Histogram_Insurance_{self.exercise_number}.png')
-        plt.show()
+        # plt.show()
 
     def exercise_evaluation(self):
         data = pd.read_excel(f'analysis/Exercise_Analysis_{self.exercise_number}/Exercise_{self.exercise_number}_Results.xlsx')

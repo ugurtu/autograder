@@ -76,56 +76,68 @@ def main(argv):
         success = wait_for(driver, "il_mhead_t_focus")
         if not success:
             return False
+
+    # set rows to 200 for a list of all submissions
+
+
+    # iterate over all submissions
     
-    # dowload all submissions of chosen exercise
-    button = driver.find_element(By.NAME, "cmd[downloadSubmissions]")
-    button.click()
-    success = wait_for(driver, "il_mhead_t_focus")
-    if not success:
-        return False
+     
     
-    # "Background tasks" bell
-    # bell_icon = driver.find_element(By.CSS_SELECTOR, ".glyphicon.glyphicon-bell")
-    bell_icon = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".glyphicon.glyphicon-bell")))
-    bell_icon.click()
-
-    # "Background tasks" button
-    link = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, "Background Tasks")))
-    link.click()
-
-    # "Exercise sheet <nr>" download button
-    elem = f"//button[contains(text(), '{SUBMISSION_NAME}')]"
-    button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, elem)))
-    button.click()
-
-    # move downloaded ZIP file into current directory
-    source_path = DOWNLOAD_PATH + SUBMISSION_NAME + '.zip'
-    destination_directory = os.getcwd()  # Get the current working directory
-    destination_path = os.path.join(destination_directory, SUBMISSION_NAME + '.zip')
-    shutil.move(source_path, destination_path)
     
-    # unpack zip in current directory and delete zip
-    # Specify the name of the ZIP file
-    zip_file_name = SUBMISSION_NAME + '.zip'
+    
+    
+    
+    
+    # # dowload all submissions of chosen exercise
+    # button = driver.find_element(By.NAME, "cmd[downloadSubmissions]")
+    # button.click()
+    # success = wait_for(driver, "il_mhead_t_focus")
+    # if not success:
+    #     return False
+    
+    # # "Background tasks" bell
+    # # bell_icon = driver.find_element(By.CSS_SELECTOR, ".glyphicon.glyphicon-bell")
+    # bell_icon = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".glyphicon.glyphicon-bell")))
+    # bell_icon.click()
 
-    # ensure the ZIP file exists, open and extract
-    if os.path.exists(zip_file_name):
-        with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
-            zip_ref.extractall('.')
-            print(f"Extracted all contents of '{zip_file_name}' to the current directory.")
+    # # "Background tasks" button
+    # link = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, "Background Tasks")))
+    # link.click()
+
+    # # "Exercise sheet <nr>" download button
+    # elem = f"//button[contains(text(), '{SUBMISSION_NAME}')]"
+    # button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, elem)))
+    # button.click()
+
+    # # move downloaded ZIP file into current directory
+    # source_path = DOWNLOAD_PATH + SUBMISSION_NAME + '.zip'
+    # destination_directory = os.getcwd()  # Get the current working directory
+    # destination_path = os.path.join(destination_directory, SUBMISSION_NAME + '.zip')
+    # shutil.move(source_path, destination_path)
+    
+    # # unpack zip in current directory and delete zip
+    # # Specify the name of the ZIP file
+    # zip_file_name = SUBMISSION_NAME + '.zip'
+
+    # # ensure the ZIP file exists, open and extract
+    # if os.path.exists(zip_file_name):
+    #     with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
+    #         zip_ref.extractall('.')
+    #         print(f"Extracted all contents of '{zip_file_name}' to the current directory.")
         
-        # remove the ZIP file after extraction
-        os.remove(zip_file_name)
-        print(f"Deleted the ZIP file: '{zip_file_name}'")
-    else:
-        print(f"The file '{zip_file_name}' does not exist.")
+    #     # remove the ZIP file after extraction
+    #     os.remove(zip_file_name)
+    #     print(f"Deleted the ZIP file: '{zip_file_name}'")
+    # else:
+    #     print(f"The file '{zip_file_name}' does not exist.")
 
-    print(f"\n==========================================================================")
-    print(f"'{SUBMISSION_NAME}' from the course {COURSE} and hand-in type '{SUBMISSION_TYPE}' \nhas been downloaded into the current directory.")
-    print(f"==========================================================================\n")
+    # print(f"\n==========================================================================")
+    # print(f"'{SUBMISSION_NAME}' from the course {COURSE} and hand-in type '{SUBMISSION_TYPE}' \nhas been downloaded into the current directory.")
+    # print(f"==========================================================================\n")
 
-    # close browser
-    driver.close()
+    # # close browser
+    # driver.close()
 
     
 
