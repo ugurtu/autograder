@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import Select
 import getpass
+import getpass
 
 
 COURSEPAGE = "https://adam.unibas.ch/goto_adam_crs_1688235.html" # TODO: specify ADAM coursesite
@@ -18,6 +19,7 @@ HANDIN_PREFIX = "Exercise sheet " # TODO: specify exact hand-in name link prefix
 # This is more flexible than doing a final username!
 uname = getpass.getuser()
 
+DOWNLOAD_PATH = f"/home/{uname}/Downloads/" # TODO: adjust downloadpath of selenium firefox browser
 DOWNLOAD_PATH = f"/home/{uname}/Downloads/" # TODO: adjust downloadpath of selenium firefox browser
 
 
