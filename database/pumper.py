@@ -77,7 +77,7 @@ class MySQLPumper:
                     results = cursor.fetchall()  # Fetch all results before executing another query
                     for row in results:
                         ip1, ip_achieved, ip_total = row
-                        s = f"\nYou achieved in the insurance exam: {ip1} Point.\nThe total sum of your hand-in is: {ip_achieved}, of {ip_total} Points"
+                        s = f"\nYou achieved in the insurance exam: {ip1} point.\nThe total sum of your hand-in is: {ip_achieved}, of {ip_total} Points"
                         with open(f"{parent_folder}/{mail}_feedback.txt", "a") as file:
                             file.write(s)
 
@@ -88,7 +88,7 @@ class MySQLPumper:
                 for file in files:
                     mail, _ = file.split("_")
                     query = f"""
-                        SELECT e.{ex}, e.IP_achieved, ip.IP_Total
+                        SELECT e.{ex}, e.Ex_achieved, ip.Exercise_Total
                         FROM Exercises e, Points_IP ip
                         WHERE e.email = '{mail}'
                     """
@@ -96,7 +96,7 @@ class MySQLPumper:
                     results = cursor.fetchall()  # Fetch all results before executing another query
                     for row in results:
                         ip1, ip_achieved, ip_total = row
-                        s = f"\nYou achieved in the insurance exam: {ip1} Point.\nThe total sum of your hand-in is: {ip_achieved}, of {ip_total} Points"
+                        s = f"\nYou achieved in the Exercise {exercise_number}, {ip1} points.\nThe total sum of your hand-in is: {ip_achieved}, of {ip_total} Points"
                         with open(f"{parent_folder}/{mail}_feedback.txt", "a") as file:
                             file.write(s)
         self.connector.close()
