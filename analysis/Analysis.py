@@ -24,7 +24,7 @@ class InsuranceAnalysis:
         """
         Distinguish between the modes.
         if self.mode == i then insurance + Exercise Nr. 1
-        if self.mode == e then exercise + Exercise Nr. 2
+        if self.mode == e then exercise_number + Exercise Nr. 2
         """
         if self.mode == "-i":
             os.chdir(f"../autograder/analysis/Insurance_Analysis_{self.exercise_number}")
@@ -58,7 +58,7 @@ class InsuranceAnalysis:
 
     """
     The bonus point is only needed for the insurance points.
-    The exercise points are already calculated.
+    The exercise_number points are already calculated.
     """
     def compute_bonus(self, data):
         if self.mode == "-i":

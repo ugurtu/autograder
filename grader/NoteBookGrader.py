@@ -7,6 +7,7 @@ import time
 from analysis.Analysis import InsuranceAnalysis
 from xls.ExcelParser import ExcelParser
 from points_parser.PointParser import PointParser
+from database.pumper import MySQLPumper
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -59,12 +60,22 @@ class NoteBookGrader:
             PointParser. Then iterate through a 
             """
             point = PointParser()
+
             for i in range(1, num_files + 1):
                 header_row.append(f'Question {i}')
                 self.question_points[f"Question {i}"] = point.question_parser(i)
-            print(self.question_points)
-            writer.writerow(header_row)
+            # print(self.question_points)
+            max_points = 0
 
+            for key, value in self.question_points.items():
+                max_points += value
+            """
+            Pump the max points to the database
+            """
+            sql = MySQLPumper()
+            sql.max_points(max_points, self.mode, self.exercise_number)
+
+            writer.writerow(header_row)
             counter = 1
 
             # Iterate over each notebook

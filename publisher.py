@@ -89,7 +89,7 @@ def main(argv):
     
     
     
-    # # dowload all submissions of chosen exercise
+    # # dowload all submissions of chosen exercise_number
     # button = driver.find_element(By.NAME, "cmd[downloadSubmissions]")
     # button.click()
     # success = wait_for(driver, "il_mhead_t_focus")

@@ -1,6 +1,6 @@
 import os
-
 import pandas as pd
+from database.pumper import MySQLPumper
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -13,7 +13,7 @@ class ExcelParser:
         self.exercise_number = exercise_number
         self.mode = mode
         os.chdir("../..")
-        self.file_path = "xls/exercise-and-insurance-points.xls"
+        self.file_path = 'xls/exercise-and-insurance-points.xls'
 
     def get_data(self):
         xls = pd.ExcelFile(self.file_path)
@@ -30,8 +30,6 @@ class ExcelParser:
 
     def merge_data(self):
         if self.mode == "-i":
-
-            print(os.getcwd())
             data2 = pd.read_csv(f'analysis/Insurance_Analysis_{self.exercise_number}/Insurance_{self.exercise_number}_Results.csv')
             data2 = data2[["E-Mail", f"IP{self.exercise_number}_calc"]]
 
@@ -40,7 +38,9 @@ class ExcelParser:
 
             merged_df = merged_df.drop(f'IP{self.exercise_number}_calc', axis=1)
             merged_df.to_excel(f'../autograder/analysis/Insurance_Analysis_{self.exercise_number}/Insurance_{self.exercise_number}_Results.xlsx', index=False)
-
+            mysql_pumper = MySQLPumper()
+            mysql_pumper.pump_ip(self.exercise_number)
+            mysql_pumper.retrieve_points(self.mode, self.exercise_number)
             return merged_df
 
         if self.mode == "-e":
@@ -50,5 +50,7 @@ class ExcelParser:
             merged_df[f"Ex{self.exercise_number}"] = merged_df["Points_Total"].fillna(0)
             merged_df = merged_df.drop("Points_Total", axis=1)
             merged_df.to_excel(f'../autograder/analysis/Exercise_Analysis_{self.exercise_number}/Exercise_{self.exercise_number}_Results.xlsx', index=False)
-
+            mysql_pumper = MySQLPumper()
+            mysql_pumper.pump_exercise(self.exercise_number)
+            mysql_pumper.retrieve_points(self.mode, self.exercise_number)
             return merged_df

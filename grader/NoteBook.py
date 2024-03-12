@@ -18,12 +18,12 @@ class NoteBook:
 
     def __init__(self, arg):
         # arg[0] is the mode -e or -i
-        # arg[1] is the exercise number or insurance number
+        # arg[1] is the exercise_number number or insurance number
         self.exercise_number = arg[1]
         if arg[0] == "-e":
             self.main_directory = f'Exercise sheet {self.exercise_number}/Abgaben'
         elif arg[0] == "-i":
-            # This is for the insurance the number of the exercise is the same as the insurance number
+            # This is for the insurance the number of the exercise_number is the same as the insurance number
             self.main_directory = f'Insurance {self.exercise_number}/Abgaben'
 
     """
