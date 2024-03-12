@@ -171,3 +171,206 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+Pipfile
+Pipfile.lock
+Exercise sheet 1/Abgaben/Bednarska_Weronika_weronika.bednarska@stud.unibas.ch_1866652/exercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Boss_Colin_c.boss@stud.unibas.ch_1861521/exercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Dragomir_Barbu_barbu.dragomir@stud.unibas.ch_1169384/exercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Erkek_Eda_eda.erkek@stud.unibas.ch_1184490/exercisesheet1_1.ipynb
+Exercise sheet 1/Abgaben/Gempeler_Valeria_valeria.gempeler@stud.unibas.ch_1640466/exercisesheet1_Valeria_Gempeler.ipynb
+Exercise sheet 1/Abgaben/Jackson_Joy_joy.jackson@stud.unibas.ch_1872970/exercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Jessner_Constantin_constantin.jessner@stud.unibas.ch_1649429/exercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Kotova_Elizaveta_elizaveta.kotova@stud.unibas.ch_1188186/exercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Macias_Leyre_leyre.macias@unibas.ch_1165146/exercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Takenouchi_Moeka_moeka.takenouchi@stud.unibas.ch_1995682/exercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Wuethrich_Tim Dennys_tim.wuethrich@stud.unibas.ch_1455557/wuethrichtimexercisesheet1.ipynb
+Exercise sheet 1/Abgaben/Zhang_Dongyu_dondon.zhang@stud.unibas.ch_1652570/exercisesheet1.ipynb
+Exercise sheet 2/Abgaben/Behrens_Leon_leon.behrens@stud.unibas.ch_515059/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Benedict_Livia_livia.benedict@unibas.ch_1170761/02exercisepids2024_Livia_Benedict.ipynb
+Exercise sheet 2/Abgaben/Buehlmann_Rouven_rouven.buehlmann@stud.unibas.ch_1632877/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Buerchler_Philipp_philipp.buerchler@stud.unibas.ch_1642770/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Cao_Andy_andy.cao@unibas.ch_1164405/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Eich_Marlene_m.eich@stud.unibas.ch_1173308/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Fekete_Saskia_saskia.fekete@stud.unibas.ch_1443475/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Frei_Mairon_mairon.frei@stud.unibas.ch_1164681/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Gschwind_Aline_aline.gschwind@stud.unibas.ch_1167969/02exercisepids20242.ipynb
+Exercise sheet 2/Abgaben/Kitzing_Emil_e.kitzing@stud.unibas.ch_1867698/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Le_Thu Hong_hong.le@stud.unibas.ch_1865070/02exercisepids2024_LE.ipynb
+Exercise sheet 2/Abgaben/Lenzlinger_Sebastian_sebastian.lenzlinger@unibas.ch_1433197/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Meijer_Karen_karen.meijer@stud.unibas.ch_1861892/Exercise2KarenMeijer.ipynb
+Exercise sheet 2/Abgaben/Mikaya_Maxim_m.mikaya@stud.unibas.ch_1981463/02exercisepids2024_Maxim_Mikaya.ipynb
+Exercise sheet 2/Abgaben/Schachinger_Marco_marco.schachinger@stud.unibas.ch_1161315/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Schenkel_Cedric Joel_cedric.schenkel@stud.unibas.ch_1435377/02exercisepids2024_cedric_schenkel.ipynb
+Exercise sheet 2/Abgaben/Smeraldy_Noeline_noeline.smeraldy@stud.unibas.ch_1429522/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Therampilly_Sewin_sewin.therampilly@stud.unibas.ch_1857290/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Uribe Sanchez_Maite Lucia_maite.uribesanchez@stud.unibas.ch_1167617/02exercisepids2024.ipynb
+Exercise sheet 2/Abgaben/Wenger_Simone_simone.wenger@unibas.ch_1444373/02exercisepids2024_2.ipynb
+Exercise sheet 2/Abgaben/Zhang_Dongyu_dondon.zhang@stud.unibas.ch_1652570/02exercisepids2024.ipynb
+vtest/pyvenv.cfg
+vtest/bin/activate
+vtest/bin/activate.csh
+vtest/bin/activate.fish
+vtest/bin/Activate.ps1
+vtest/bin/chardetect
+vtest/bin/docutils
+vtest/bin/f2py
+vtest/bin/fonttools
+vtest/bin/get_gprof
+vtest/bin/get_objgraph
+vtest/bin/gmail_oauth2
+vtest/bin/ipython
+vtest/bin/ipython3
+vtest/bin/jsonschema
+vtest/bin/jupyter
+vtest/bin/jupyter-dejavu
+vtest/bin/jupyter-execute
+vtest/bin/jupyter-kernel
+vtest/bin/jupyter-kernelspec
+vtest/bin/jupyter-migrate
+vtest/bin/jupyter-nbconvert
+vtest/bin/jupyter-run
+vtest/bin/jupyter-troubleshoot
+vtest/bin/jupyter-trust
+vtest/bin/jupytext
+vtest/bin/jupytext-config
+vtest/bin/markdown-it
+vtest/bin/normalizer
+vtest/bin/otter
+vtest/bin/pip
+vtest/bin/pip3
+vtest/bin/pip3.10
+vtest/bin/pybabel
+vtest/bin/pyftmerge
+vtest/bin/pyftsubset
+vtest/bin/pygmentize
+vtest/bin/python
+vtest/bin/python-on-whales
+vtest/bin/python3
+vtest/bin/python3.10
+vtest/bin/rst2html.py
+vtest/bin/rst2html4.py
+vtest/bin/rst2html5.py
+vtest/bin/rst2latex.py
+vtest/bin/rst2man.py
+vtest/bin/rst2odt_prepstyles.py
+vtest/bin/rst2odt.py
+vtest/bin/rst2pseudoxml.py
+vtest/bin/rst2s5.py
+vtest/bin/rst2xetex.py
+vtest/bin/rst2xml.py
+vtest/bin/rstpep2html.py
+vtest/bin/runxlrd.py
+vtest/bin/sphinx-apidoc
+vtest/bin/sphinx-autogen
+vtest/bin/sphinx-build
+vtest/bin/sphinx-quickstart
+vtest/bin/tqdm
+vtest/bin/ttx
+vtest/bin/undill
+vtest/bin/wheel
+vtest/etc/jupyter/jupyter_notebook_config.d/jupytext.json
+vtest/etc/jupyter/jupyter_server_config.d/jupytext.json
+vtest/etc/jupyter/nbconfig/notebook.d/widgetsnbextension.json
+vtest/share/jupyter/kernels/python3/kernel.json
+vtest/share/jupyter/kernels/python3/logo-svg.svg
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/install.json
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/package.json
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/schemas/@jupyter-widgets/jupyterlab-manager/package.json.orig
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/schemas/@jupyter-widgets/jupyterlab-manager/plugin.json
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/61.21f571face17e35076c2.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/113.e4cfda62b59ddbe550d3.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/134.fe2572ece3b7955c89bb.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/202.0336063976910618ce3f.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/291.cff5ef71b29e18850479.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/336.0a90bd910629a565bb7e.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/495.3e275af54861cdeb3e75.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/595.998263bfa9875eeeb29b.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/596.6ead6b6190d3ef27b60a.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/644.52a1098a3a5f3e45abff.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/699.e966b1425a7d4e8c3f4e.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/965.5f43c4fc8f77ed09927b.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/remoteEntry.9f387e5e108e458f62c3.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/style.js
+vtest/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/static/third-party-licenses.json
+vtest/share/jupyter/labextensions/ipylab/install.json
+vtest/share/jupyter/labextensions/ipylab/package.json
+vtest/share/jupyter/labextensions/ipylab/static/78.bae6a35721d5e7309228.js
+vtest/share/jupyter/labextensions/ipylab/static/223.65104e3518cc2846229a.js
+vtest/share/jupyter/labextensions/ipylab/static/480.16044a8abb039e4c2a69.js
+vtest/share/jupyter/labextensions/ipylab/static/568.9ba08c8aad161a412b38.js
+vtest/share/jupyter/labextensions/ipylab/static/755.097126830783dc2ceab2.js
+vtest/share/jupyter/labextensions/ipylab/static/856.9dc62dfa1fc2e1667e5a.js
+vtest/share/jupyter/labextensions/ipylab/static/remoteEntry.1c9b77c557d03a2498f4.js
+vtest/share/jupyter/labextensions/ipylab/static/style.js
+vtest/share/jupyter/labextensions/ipylab/static/third-party-licenses.json
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/install.json
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/package.json
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/schemas/jupyterlab-jupytext/package.json.orig
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/schemas/jupyterlab-jupytext/plugin.json
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/static/568.2f4dbc9b642b3ae82c58.js
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/static/816.6e499bb20857c8fb837d.js
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/static/834.90ed5e1570392532523d.js
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/static/remoteEntry.7b569f28d2ab8ae4828e.js
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/static/style.js
+vtest/share/jupyter/labextensions/jupyterlab-jupytext/static/third-party-licenses.json
+vtest/share/jupyter/labextensions/jupyterlab_pygments/install.json
+vtest/share/jupyter/labextensions/jupyterlab_pygments/package.json
+vtest/share/jupyter/labextensions/jupyterlab_pygments/static/568.1e2faa2ba0bbe59c4780.js
+vtest/share/jupyter/labextensions/jupyterlab_pygments/static/747.67662283a5707eeb4d4c.js
+vtest/share/jupyter/labextensions/jupyterlab_pygments/static/remoteEntry.5cbb9d2323598fbda535.js
+vtest/share/jupyter/labextensions/jupyterlab_pygments/static/style.js
+vtest/share/jupyter/labextensions/jupyterlab_pygments/static/third-party-licenses.json
+vtest/share/jupyter/nbconvert/templates/asciidoc/conf.json
+vtest/share/jupyter/nbconvert/templates/asciidoc/index.asciidoc.j2
+vtest/share/jupyter/nbconvert/templates/base/cell_id_anchor.j2
+vtest/share/jupyter/nbconvert/templates/base/celltags.j2
+vtest/share/jupyter/nbconvert/templates/base/display_priority.j2
+vtest/share/jupyter/nbconvert/templates/base/jupyter_widgets.html.j2
+vtest/share/jupyter/nbconvert/templates/base/mathjax.html.j2
+vtest/share/jupyter/nbconvert/templates/base/null.j2
+vtest/share/jupyter/nbconvert/templates/basic/conf.json
+vtest/share/jupyter/nbconvert/templates/basic/index.html.j2
+vtest/share/jupyter/nbconvert/templates/classic/base.html.j2
+vtest/share/jupyter/nbconvert/templates/classic/conf.json
+vtest/share/jupyter/nbconvert/templates/classic/index.html.j2
+vtest/share/jupyter/nbconvert/templates/classic/static/style.css
+vtest/share/jupyter/nbconvert/templates/compatibility/display_priority.tpl
+vtest/share/jupyter/nbconvert/templates/compatibility/full.tpl
+vtest/share/jupyter/nbconvert/templates/lab/base.html.j2
+vtest/share/jupyter/nbconvert/templates/lab/conf.json
+vtest/share/jupyter/nbconvert/templates/lab/index.html.j2
+vtest/share/jupyter/nbconvert/templates/lab/mermaidjs.html.j2
+vtest/share/jupyter/nbconvert/templates/lab/static/index.css
+vtest/share/jupyter/nbconvert/templates/lab/static/theme-dark.css
+vtest/share/jupyter/nbconvert/templates/lab/static/theme-light.css
+vtest/share/jupyter/nbconvert/templates/latex/base.tex.j2
+vtest/share/jupyter/nbconvert/templates/latex/conf.json
+vtest/share/jupyter/nbconvert/templates/latex/display_priority.j2
+vtest/share/jupyter/nbconvert/templates/latex/document_contents.tex.j2
+vtest/share/jupyter/nbconvert/templates/latex/index.tex.j2
+vtest/share/jupyter/nbconvert/templates/latex/null.j2
+vtest/share/jupyter/nbconvert/templates/latex/report.tex.j2
+vtest/share/jupyter/nbconvert/templates/latex/style_bw_ipython.tex.j2
+vtest/share/jupyter/nbconvert/templates/latex/style_bw_python.tex.j2
+vtest/share/jupyter/nbconvert/templates/latex/style_ipython.tex.j2
+vtest/share/jupyter/nbconvert/templates/latex/style_jupyter.tex.j2
+vtest/share/jupyter/nbconvert/templates/latex/style_python.tex.j2
+vtest/share/jupyter/nbconvert/templates/markdown/conf.json
+vtest/share/jupyter/nbconvert/templates/markdown/index.md.j2
+vtest/share/jupyter/nbconvert/templates/python/conf.json
+vtest/share/jupyter/nbconvert/templates/python/index.py.j2
+vtest/share/jupyter/nbconvert/templates/reveal/base.html.j2
+vtest/share/jupyter/nbconvert/templates/reveal/cellslidedata.j2
+vtest/share/jupyter/nbconvert/templates/reveal/conf.json
+vtest/share/jupyter/nbconvert/templates/reveal/index.html.j2
+vtest/share/jupyter/nbconvert/templates/reveal/static/custom_reveal.css
+vtest/share/jupyter/nbconvert/templates/rst/conf.json
+vtest/share/jupyter/nbconvert/templates/rst/index.rst.j2
+vtest/share/jupyter/nbconvert/templates/script/conf.json
+vtest/share/jupyter/nbconvert/templates/script/script.j2
+vtest/share/jupyter/nbconvert/templates/webpdf/conf.json
+vtest/share/jupyter/nbconvert/templates/webpdf/index.pdf.j2
+vtest/share/jupyter/nbextensions/jupyter-js-widgets/extension.js
+vtest/share/jupyter/nbextensions/jupyter-js-widgets/extension.js.map
+vtest/share/man/man1/ipython.1
+vtest/share/man/man1/ttx.1
