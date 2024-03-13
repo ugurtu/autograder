@@ -78,7 +78,7 @@ The packages are:
   
   #### Running Program
   
-  ![Recording](/home/ugur/Desktop/autograder/Recording.gif)
+  ![Recording](Recording.gif)
   
   ### 2.2.1 Database branch
   
