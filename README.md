@@ -3,14 +3,16 @@
 This is an automated grader that evaluates students' grades. As of now it is structured into 3 parts:
 
 - Auto-downloader: Downloads specified submissions from all students who submitted as ZIP file and extracts it into the 'autograder' directory. Script: `adam.py`
-- Auto-grader: Takes downloaded hand-ins (Jupyter Notebooks of students) and performs otter-grader checks; summarizes results into a spreadsheet. Scripts: `main.py` and `insurance_analysis.py`
+- Auto-grader: Takes downloaded hand-ins (Jupyter Notebooks of students) and performs otter-grader checks; summarizes results into a spreadsheet. Scripts: `main.py`
 - [WORK-IN-PROGRESS] Auto-publisher: Publishes auto-graded results onto ADAM as feedback for the students.
 
 #### Contents
 - 1. Setup and Virtual Environment
+
 - 2. Structure
   - 2.1 Structure of Auto-downloader
   - 2.2 Structure of Auto-grader
+    - 2.2.1 Database Branch
   - 2.3 Structure of Auto-publisher [WIP]
 
 ## 1. Setup and Virtual Environment
@@ -46,21 +48,58 @@ The packages are:
 - ``grader``
 - `main.py`
 - `analysis`
+- `points parser`
+
+- `xls`
 
 ##### How To Run The Program
 
 - Download all Hand-Ins from Adam and Extract in the **working directory**
-- Copy all the necessary tests from the Insurance Week
+
+- Copy all the necessary tests from the `Insurance Week` or `Exercise Week` 
+
 - Then the execution must the following:
-  - `main.py` If the programm is done, it returns a 0
-    - It creates a feedback_YMD folder (Which has the otter grader output as feedback)
-    - It has the raw grades:
-      If all tests were correct: 1 1 1 for Question 1, Question 2, Question 3
-      If one test failed eg. Question 1, the grading is: 0 1 1
-      If all tests failed, then the output is 0 0 0 
-      The names, e-mail, individual points are stored in: `grades_raw_YMD.csv`
-  - To calculate the Bonus-Points and make a bar-plot use: `analysis.py`
-    - This output is in the analysis folder
+  - `main.py -i numberofweek` **for insurance** If the program is done, it returns a 0
+    - In the analysis directory, it creates a folder `Insurance_Analysis_numberofweek`
+      - `Insurance_Analysis_numberofweek` folder has `Feedback_Insurance numberofweek` folder this contains the feedback.
+        - the feedback is a `.txt` File it contains: If all tests passed, or which failed.
+      - A `CSV` with the detailed analysis. `YYMMDD_CSV_Grades_Insurance_numberofweek`
+      - A histogram with the statistics. 
+      - The calculated result **as** `CSV`
+      - The calculated result **as** `XLSX`
+  - `main.py -e numberofweek` **for exercises** If the program is done, it returns a 0
+    - In the analysis directory, it creates a folder `Exercise_Analysis_numberofweek`
+      - `Exercise_Analysis_numberofweek` folder has a `Feedback_Exercise numberofweek`  which contains the feedback.
+        - the feedback is a `.txt` File it contains: If all tests passed, or which failed.
+      - A `CSV` with the detailed analysis. `YYMMDD_CSV_Grades_Exercise_numberofweek`
+      - A histogram with the statistics. 
+      - The calculated result **as** `CSV`
+      - The calculated result **as** `XLSX`
+  
+  #### Running Program
+  
+  ![Recording](/home/ugur/Desktop/autograder/Recording.gif)
+  
+  ### 2.2.1 Database branch
+  
+  To use the `database` branch please use the following command:
+  
+  ``` 
+  git checkout database
+  ```
+  
+  The execution is the same as [How to Run the Program](# How to Run the Program). The only difference is: It keeps track of the grading.
+  
+  This means in every  `email@stud.edu.com_feedback.txt` the file contains the following two lines.
+  
+  1. **For insurance**
+     - You achieved in the insurance exam: `X` points.
+       The total sum of your hand-in is: `X` of `Y` points.
+  2. **For Exercise** 
+     - You achieved in the Exercise `X, Y` points.
+       The total sum of your hand-in is: `total of hand ins`, of `total exercise points` Points
+  
+   
 
 ### 2.3 Structure of Auto-publisher
 
