@@ -61,7 +61,7 @@ class ExcelParser:
             
             """
             mysql_pumper = MySQLPumper()
-            mysql_pumper.pump_ip(self.exercise_number)
+            mysql_pumper.pump_ip(self.exercise_number, self.mode)
             mysql_pumper.retrieve_points(self.mode, self.exercise_number)
 
             return merged_df
