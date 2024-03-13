@@ -1,7 +1,13 @@
 import re
 
+__author__ = "Ugur Turhal", "Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
+__date__ = "2024/03/13"
+__version__ = "1.0.0"
+
 
 # Read the script where the test case is defined
+
 
 class PointParser:
 
@@ -22,5 +28,3 @@ class PointParser:
 
     def max_points(self):
         return self.max_points
-
-

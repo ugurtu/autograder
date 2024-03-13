@@ -3,8 +3,10 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-__author__ = "Ugur Turhal", "Mark Starzynski"
-__email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
+__author__ = "Ugur Turhal","Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
+__date__ = "2024/03/13"
+__version__ = "1.0.0"
 
 """
 This is a class. To get the notebooks. This must downloaded from Adam.
@@ -98,8 +100,8 @@ class InsuranceAnalysis:
         ax.set_xlabel('Received Points')
         ax.set_ylabel('Number of Students')
 
+        #Barplot
         sns.barplot(data[f'Ex{self.exercise_number}'].value_counts(), ax=ax, alpha=0.8)
         plt.title('Statistics')
-        #plt.gca().xaxis.set_major_formatter(plt.FuncFormatter())
         plt.savefig(f'analysis/Exercise_Analysis_{self.exercise_number}/Histogram_Exercise_{self.exercise_number}.png')
         plt.show()

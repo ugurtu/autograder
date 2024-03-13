@@ -4,6 +4,9 @@ from database.pumper import MySQLPumper
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
+__date__ = "2024/03/13"
+__version__ = "1.0.0"
+
 
 
 class ExcelParser:

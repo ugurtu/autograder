@@ -1,11 +1,12 @@
 import os
 
+__author__ = "Ugur Turhal", "Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
+__date__ = "2024/03/13"
+__version__ = "1.0.0"
 
 """
-__author__ = "Ugur Turhal","Mark Starzynski"
-__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
-
-This is a class. To get the notebooks. This must downloaded from Adam.
+This is a class, to get the notebooks. This must downloaded from Adam.
 And unpacked in the autograder directory.
 It will be used to grade the students' assignments.
 """
@@ -16,7 +17,7 @@ class NoteBook:
     This class will be used to grade the students' assignments.
     """
 
-    def __init__(self, arg):
+    def __init__(self, arg: list):
         # arg[0] is the mode -e or -i
         # arg[1] is the exercise_number number or insurance number
         self.exercise_number = arg[1]
@@ -32,7 +33,7 @@ class NoteBook:
     """
 
     # Function to recursively find notebooks in subdirectories
-    def find_notebooks(self):
+    def find_notebooks(self) -> list:
         notebooks = []
         for root, dirs, files in os.walk(self.main_directory):
             for file in files:

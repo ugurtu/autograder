@@ -3,6 +3,11 @@ import os
 import mysql.connector
 import pandas as pd
 
+__author__ = "Ugur Turhal", "Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
+__date__ = "2024/03/13"
+__version__ = "1.0.0"
+
 
 class MySQLPumper:
 
@@ -20,7 +25,7 @@ class MySQLPumper:
         # Or f'IP{exercise_number}'
         self.ex_number = ""
 
-    def pump_ip(self, exercise_number, modes):
+    def pump_ip(self, exercise_number: int, modes: str):
         self.mode = modes
 
         if self.mode == "-i":
@@ -37,7 +42,6 @@ class MySQLPumper:
                 cursor.execute(query, (points, e_mail))
                 self.connector.commit()
 
-
         if self.mode == "-e":
             data = pd.read_excel(
                 f'analysis/Exercise_Analysis_{exercise_number}/Exercise_{exercise_number}_Results.xlsx',
@@ -53,7 +57,7 @@ class MySQLPumper:
                 cursor.execute(query, (points, e_mail))
                 self.connector.commit()
 
-    def pump_exercise(self, exercise_number, modes):
+    def pump_exercise(self, exercise_number: int, modes: str) -> None:
         if modes == "-i":
             data = pd.read_excel(
                 f'analysis/Insurance_Analysis_{exercise_number}/Insurance_{exercise_number}_Results.xlsx',
@@ -91,7 +95,7 @@ class MySQLPumper:
             self.connector.cursor().execute(query, (points,))
             self.connector.commit()
 
-    def retrieve_points(self, modes, exercise_number):
+    def retrieve_points(self, modes: str, exercise_number: int):
         if modes == "-i":
             print("Writing points for Feedback_Insurance")
             ip = f"IP{exercise_number}"
