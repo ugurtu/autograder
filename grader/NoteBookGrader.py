@@ -7,7 +7,6 @@ import time
 from analysis.Analysis import InsuranceAnalysis
 from xls.ExcelParser import ExcelParser
 from points_parser.PointParser import PointParser
-from database.pumper import MySQLPumper
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -72,8 +71,6 @@ class NoteBookGrader:
             """
             Pump the max points to the database
             """
-            sql = MySQLPumper()
-            sql.max_points(max_points, self.mode, self.exercise_number)
 
             writer.writerow(header_row)
             counter = 1
