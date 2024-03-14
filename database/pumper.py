@@ -10,7 +10,12 @@ __version__ = "1.0.0"
 
 
 class MySQLPumper:
-
+    """
+            host=...,
+            user=...,
+            password=...,
+            database=...
+    """
     def __init__(self):
         self.connector = mysql.connector.connect(
             host=...,

@@ -20,6 +20,7 @@ class NoteBook:
     def __init__(self, arg: list):
         # arg[0] is the mode -e or -i
         # arg[1] is the exercise_number number or insurance number
+        self.mode = arg[0]
         self.exercise_number = arg[1]
         if arg[0] == "-e":
             self.main_directory = f'Exercise sheet {self.exercise_number}/Abgaben'
@@ -38,9 +39,23 @@ class NoteBook:
         for root, dirs, files in os.walk(self.main_directory):
             for file in files:
                 if file.endswith('.ipynb'):
-                    # New file name
-                    # This is for UNIX systems
-                    # Linux
+                    # This method prevents that the test fails,
+                    # if someone has a late submission, for that
+                    # we have to rename the file to the exercise_number number
+                    # @self.exercise_numberNAMEOFNOTEBOOKYEAR.ipynb
+                    # since we have also a leading 0 we have to check if the exercise_number number is smaller than 10
+                    name = ""
+                    if self.mode == "-e":
+                        if int(self.exercise_number) < 10:
+                            name = f"{0}{self.exercise_number}exercisepids2024.ipynb"
+                        elif int(self.exercise_number) >= 10:
+                            name = f"{self.exercise_number}exercisepids2024.ipynb"
+
+                    elif self.mode == "-i":
+                        if int(self.exercise_number):
+                            name = f"insurance{self.exercise_number}.ipynb"
+
+                    os.rename(os.path.join(root, file), os.path.join(root, name))
                     root = root.replace(' ', '\ ')
                     """
                     Comment in to see what the path is.
@@ -50,7 +65,7 @@ class NoteBook:
                     and then change the path.
                     """
                     # print(os.path.join(root, file))
-
+                    print(file)
                     notebooks.append(os.path.join(root, file))
 
         return notebooks
