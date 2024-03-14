@@ -104,4 +104,3 @@ class InsuranceAnalysis:
         sns.barplot(data[f'Ex{self.exercise_number}'].value_counts(), ax=ax, alpha=0.8)
         plt.title('Statistics')
         plt.savefig(f'analysis/Exercise_Analysis_{self.exercise_number}/Histogram_Exercise_{self.exercise_number}.png')
-        plt.show()
