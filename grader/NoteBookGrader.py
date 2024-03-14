@@ -7,6 +7,7 @@ import time
 from analysis.Analysis import InsuranceAnalysis
 from xls.ExcelParser import ExcelParser
 from points_parser.PointParser import PointParser
+from localdb.WriterDataBaseOflline import WriterDataBaseOffline
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -68,6 +69,10 @@ class NoteBookGrader:
 
             for key, value in self.question_points.items():
                 max_points += value
+
+            store_to_db = WriterDataBaseOffline(self.exercise_number, self.mode)
+            store_to_db.write_total(max_points)
+
             """
             Pump the max points to the database
             """
