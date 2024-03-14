@@ -43,18 +43,19 @@ class NoteBook:
                     # we have to rename the file to the exercise_number number
                     # @self.exercise_numberNAMEOFNOTEBOOKYEAR.ipynb
                     # since we have also a leading 0 we have to check if the exercise_number number is smaller than 10
-                    name = ""
                     if self.mode == "-e":
                         if int(self.exercise_number) < 10:
                             name = f"{0}{self.exercise_number}exercisepids2024.ipynb"
+                            os.rename(os.path.join(root, file), os.path.join(root, name))
                         elif int(self.exercise_number) >= 10:
                             name = f"{self.exercise_number}exercisepids2024.ipynb"
+                            os.rename(os.path.join(root, file), os.path.join(root, name))
 
                     elif self.mode == "-i":
                         if int(self.exercise_number):
                             name = f"insurance{self.exercise_number}.ipynb"
+                            os.rename(os.path.join(root, file), os.path.join(root, name))
 
-                    os.rename(os.path.join(root, file), os.path.join(root, name))
                     root = root.replace(' ', '\ ')
                     """
                     Comment in to see what the path is.
