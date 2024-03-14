@@ -38,9 +38,11 @@ class NoteBook:
         for root, dirs, files in os.walk(self.main_directory):
             for file in files:
                 if file.endswith('.ipynb'):
-                    # New file name
-                    # This is for UNIX systems
-                    # Linux
+                    # This method prevents that the test fails,
+                    # if someone has a late submission, for that
+                    # we have to rename the file to the exercise_number number
+                    # @self.exercise_numberNAMEOFNOTEBOOKYEAR.ipynb
+                    # since we have also a leading 0 we have to check if the exercise_number number is smaller than 10
                     name = ""
                     if self.mode == "-e":
                         if int(self.exercise_number) < 10:
@@ -52,6 +54,7 @@ class NoteBook:
                         if int(self.exercise_number):
                             name = f"insurance{self.exercise_number}.ipynb"
 
+                    os.rename(os.path.join(root, file), os.path.join(root, name))
                     root = root.replace(' ', '\ ')
                     """
                     Comment in to see what the path is.
