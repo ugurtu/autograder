@@ -44,7 +44,7 @@ class ExcelParser:
 
             write_result = WriterDataBaseOffline(self.exercise_number, self.mode)
             write_result.write()
-
+            os.remove(f'autograder/.OTTERLOG')
             return merged_df
 
         if self.mode == "-e":
@@ -60,5 +60,5 @@ class ExcelParser:
 
             write_result = WriterDataBaseOffline(self.exercise_number, self.mode)
             write_result.write()
-
+            os.remove(f'../autograder/.OTTER_LOG')
             return merged_df
