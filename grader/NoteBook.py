@@ -19,6 +19,7 @@ class NoteBook:
     def __init__(self, arg):
         # arg[0] is the mode -e or -i
         # arg[1] is the exercise_number number or insurance number
+        self.mode = arg[0]
         self.exercise_number = arg[1]
         if arg[0] == "-e":
             self.main_directory = f'Exercise sheet {self.exercise_number}/Abgaben'
@@ -40,6 +41,17 @@ class NoteBook:
                     # New file name
                     # This is for UNIX systems
                     # Linux
+                    name = ""
+                    if self.mode == "-e":
+                        if int(self.exercise_number) < 10:
+                            name = f"{0}{self.exercise_number}exercisepids2024.ipynb"
+                        elif int(self.exercise_number) >= 10:
+                            name = f"{self.exercise_number}exercisepids2024.ipynb"
+
+                    elif self.mode == "-i":
+                        if int(self.exercise_number):
+                            name = f"insurance{self.exercise_number}.ipynb"
+
                     root = root.replace(' ', '\ ')
                     """
                     Comment in to see what the path is.

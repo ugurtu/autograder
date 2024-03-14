@@ -102,4 +102,3 @@ class InsuranceAnalysis:
         plt.title('Statistics')
         #plt.gca().xaxis.set_major_formatter(plt.FuncFormatter())
         plt.savefig(f'analysis/Exercise_Analysis_{self.exercise_number}/Histogram_Exercise_{self.exercise_number}.png')
-        plt.show()
