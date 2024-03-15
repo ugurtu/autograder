@@ -18,10 +18,12 @@ class MySQLPumper:
     """
     def __init__(self):
         self.connector = mysql.connector.connect(
-            host='80.74.145.160',
-            user='pids',
-            password='_4x9U9z1a',
-            database='pids'
+            """
+                    host=...,
+                    user=...,
+                    password=...,
+                    database=...
+            """
         )
         self.mode = ""
         self.exercise_number = 0
