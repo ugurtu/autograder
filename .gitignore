@@ -19,7 +19,7 @@ analysis/Exercise_Analysis/ *
 *.xls
 *.xlsx
 /Insurance\ *
-
+!requirements.txt
 # C extensions
 *.so
 
