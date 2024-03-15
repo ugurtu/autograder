@@ -84,27 +84,33 @@ class NoteBookGrader:
             for notebook in self.notebooks:
                 print(f"Starting grading on Notebook {counter} out of {len(self.notebooks)}...")
                 counter += 1
-
                 folder_name = os.path.basename(os.path.dirname(notebook))
                 name, family_name, student_email, matriculation_number = "", "", "", ""
                 folder_name = folder_name.split('_')
 
                 if len(folder_name) == 4:
                     name, family_name, student_email, matriculation_number = folder_name
-                    name = name.replace('\ ', ' ')
-                    family_name = family_name.replace('\ ', ' ')
+                    name = name.replace('\\ ', ' ')
+                    family_name = family_name.replace('\\ ', ' ')
 
                 else:
                     name = folder_name[0]
-                    name = name.replace('\ ', ' ')
+                    name = name.replace('\\ ', ' ')
                     family_name = folder_name[2] + ' ' + folder_name[3]
-                    family_name = family_name.replace('\ ', ' ')
+                    family_name = family_name.replace('\\ ', ' ')
 
                     student_email = folder_name[4]
                     matriculation_number = folder_name[5]
 
                 notebook_grades = [name, family_name, student_email, matriculation_number]
 
+                # VERY IMPORTANT MUST BE THIS WAY, ELSE IT WILL FAIL
+                # other methods will produce a big bottleneck.
+                # this is efficient and fast.
+                pattern = r'(Verspaetete Abgabe - )'
+
+                # Replace the pattern with backslashes
+                notebook = re.sub(pattern, r'Verspaetete\\ Abgabe\\ -\ ', notebook)
                 # Execute the otter check command
                 command = f'otter check {notebook}'
                 output = subprocess.check_output(command, shell=True, encoding='utf-8')
