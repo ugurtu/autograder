@@ -18,10 +18,10 @@ class MySQLPumper:
     """
     def __init__(self):
         self.connector = mysql.connector.connect(
-            host=...,
-            user=...,
-            password=...,
-            database=...
+            host='80.74.145.160',
+            user='pids',
+            password='_4x9U9z1a',
+            database='pids'
         )
         self.mode = ""
         self.exercise_number = 0
@@ -41,7 +41,7 @@ class MySQLPumper:
 
             for i in range(len(data)):
                 e_mail = data[f"E-Mail"][i]
-                points = data[ip_number][i]
+                points = float(data[ip_number][i])
                 cursor = self.connector.cursor()
                 query = f'UPDATE Exercises SET {ip_number} = %s WHERE email = %s'
                 cursor.execute(query, (points, e_mail))
@@ -63,6 +63,9 @@ class MySQLPumper:
                 self.connector.commit()
 
     def pump_exercise(self, exercise_number: int, modes: str) -> None:
+        """
+        Pumps into Exercises table the points from the analysis.
+        """
         if modes == "-i":
             data = pd.read_excel(
                 f'analysis/Insurance_Analysis_{exercise_number}/Insurance_{exercise_number}_Results.xlsx',
@@ -78,7 +81,7 @@ class MySQLPumper:
 
         for i in range(len(data)):
             e_mail = data["E-Mail"][i]
-            points = data[self.ex_number][i]
+            points = float(data[self.ex_number][i])
             query = f'UPDATE Exercises SET {self.ex_number} = %s WHERE email = %s'
             self.connector.cursor().execute(query, (points, e_mail))
             self.connector.commit()
@@ -101,6 +104,10 @@ class MySQLPumper:
             self.connector.commit()
 
     def retrieve_points(self, modes: str, exercise_number: int):
+        """
+        This method retrieves the points from the database and writes them into a file.
+        :param modes:
+        """
         if modes == "-i":
             print("Writing points for Feedback_Insurance")
             ip = f"IP{exercise_number}"

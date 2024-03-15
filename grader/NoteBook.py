@@ -36,7 +36,7 @@ class NoteBook:
     # Function to recursively find notebooks in subdirectories
     def find_notebooks(self) -> list:
         notebooks = []
-        for root, dirs, files in os.walk(self.main_directory):
+        for root, _, files in os.walk(self.main_directory):
             for file in files:
                 if file.endswith('.ipynb'):
                     # This method prevents that the test fails,
@@ -44,20 +44,9 @@ class NoteBook:
                     # we have to rename the file to the exercise_number number
                     # @self.exercise_numberNAMEOFNOTEBOOKYEAR.ipynb
                     # since we have also a leading 0 we have to check if the exercise_number number is smaller than 10
-                    if self.mode == "-e":
-                        if int(self.exercise_number) < 10:
-                            name = f"{0}{self.exercise_number}exercisepids2024.ipynb"
-                            os.rename(os.path.join(root, file), os.path.join(root, name))
-                        elif int(self.exercise_number) >= 10:
-                            name = f"{self.exercise_number}exercisepids2024.ipynb"
-                            os.rename(os.path.join(root, file), os.path.join(root, name))
 
-                    elif self.mode == "-i":
-                        if int(self.exercise_number):
-                            name = f"insurance{self.exercise_number}.ipynb"
-                            os.rename(os.path.join(root, file), os.path.join(root, name))
+                    root = root.replace(' ', r'\ ')
 
-                    root = root.replace(' ', '\ ')
                     """
                     Comment in to see what the path is.
                     Maybe We have to change the path for windows
@@ -66,7 +55,7 @@ class NoteBook:
                     and then change the path.
                     """
                     # print(os.path.join(root, file))
-                    print(file)
+
                     notebooks.append(os.path.join(root, file))
 
         return notebooks

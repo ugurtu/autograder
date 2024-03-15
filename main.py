@@ -3,11 +3,13 @@ import sys
 from grader.NoteBook import NoteBook
 from grader.NoteBookGrader import NoteBookGrader
 
+
+__author__ = "Ugur Turhal","Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
+
 """
 This is a class. 
 It will be used to grade the students' assignments.
-__author__ = "Ugur Turhal","Mark Starzynski"
-__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
 """
 
 
