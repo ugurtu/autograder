@@ -18,12 +18,13 @@ class NoteBook:
 
     def __init__(self, arg):
         # arg[0] is the mode -e or -i
-        # arg[1] is the exercise number or insurance number
+        # arg[1] is the exercise_number number or insurance number
+        self.mode = arg[0]
         self.exercise_number = arg[1]
         if arg[0] == "-e":
             self.main_directory = f'Exercise sheet {self.exercise_number}/Abgaben'
         elif arg[0] == "-i":
-            # This is for the insurance the number of the exercise is the same as the insurance number
+            # This is for the insurance the number of the exercise_number is the same as the insurance number
             self.main_directory = f'Insurance {self.exercise_number}/Abgaben'
 
     """
@@ -34,13 +35,17 @@ class NoteBook:
     # Function to recursively find notebooks in subdirectories
     def find_notebooks(self):
         notebooks = []
-        for root, dirs, files in os.walk(self.main_directory):
+        for root, _, files in os.walk(self.main_directory):
             for file in files:
                 if file.endswith('.ipynb'):
-                    # New file name
-                    # This is for UNIX systems
-                    # Linux
-                    root = root.replace(' ', '\ ')
+                    # This method prevents that the test fails,
+                    # if someone has a late submission, for that
+                    # we have to rename the file to the exercise_number number
+                    # @self.exercise_numberNAMEOFNOTEBOOKYEAR.ipynb
+                    # since we have also a leading 0 we have to check if the exercise_number number is smaller than 10
+
+                    root = root.replace(' ', r'\ ')
+
                     """
                     Comment in to see what the path is.
                     Maybe We have to change the path for windows
@@ -49,7 +54,7 @@ class NoteBook:
                     and then change the path.
                     """
                     # print(os.path.join(root, file))
-
+                    os.listdir(f"Exercise sheet {self.exercise_number}/Abgaben")
                     notebooks.append(os.path.join(root, file))
 
         return notebooks
