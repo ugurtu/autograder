@@ -12,15 +12,20 @@ __version__ = "1.0.0"
 
 
 class ExcelParser:
+    """
+    :param mode: -e or -i
+    :int: exercise_number: The number of the exercise
+    :param sheet_name: The name of the sheet in the xls file
+    """
 
-    def __init__(self, sheet_name, exercise_number, mode):
+    def __init__(self, sheet_name: str, exercise_number: int, mode: str):
         self.sheet_name = sheet_name
         self.exercise_number = exercise_number
         self.mode = mode
         os.chdir("../..")
         self.file_path = 'xls/exercise-and-insurance-points.xls'
 
-    def get_data(self):
+    def get_data(self) -> pd.DataFrame:
         xls = pd.ExcelFile(self.file_path)
         data = pd.read_excel(xls, self.sheet_name)
         return data
@@ -30,10 +35,9 @@ class ExcelParser:
     calculated_points.csv and data from the excel file.
     If E-mail is present in both files, the data is merged.
     If not present, then it is just NaN. It gives a new xls file.
-    
     """
 
-    def merge_data(self):
+    def merge_data(self) -> pd.DataFrame:
         if self.mode == "-i":
             data2 = pd.read_csv(
                 f'analysis/Insurance_Analysis_{self.exercise_number}/Insurance_{self.exercise_number}_Results.csv')
@@ -73,7 +77,6 @@ class ExcelParser:
 
             """
             Pump the data to the MySQL database
-            
             """
             mysql_pumper = MySQLPumper()
             mysql_pumper.pump_ip(self.exercise_number, self.mode)

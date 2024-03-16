@@ -22,6 +22,7 @@ analysis/Exercise_Analysis/ *
 !requirements.txt
 # C extensions
 *.so
+!localdb/SampleDatabaseCSVs/*.csv
 
 # Distribution / packaging
 .Python
