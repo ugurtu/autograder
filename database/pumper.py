@@ -18,11 +18,11 @@ class MySQLPumper:
     def __init__(self):
         self.connector = mysql.connector.connect(**config)
         self.mode = ""
-        self.exercise_number = 2
+        self.exercise_number = 0
         # Needed in pump_exercise method!
         # We have to specify it like f'IP{exercise_number}'
         # Or f'IP{exercise_number}'
-        self.ex_number = f'IP{2}'
+        self.ex_number = ""
 
     def pump_ip(self, exercise_number: int, modes: str):
         self.mode = modes
