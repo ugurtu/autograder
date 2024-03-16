@@ -19,9 +19,10 @@ analysis/Exercise_Analysis/ *
 *.xls
 *.xlsx
 /Insurance\ *
-
+!requirements.txt
 # C extensions
 *.so
+!localdb/SampleDatabaseCSVs/*.csv
 
 # Distribution / packaging
 .Python
