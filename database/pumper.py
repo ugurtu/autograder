@@ -56,7 +56,7 @@ class MySQLPumper:
             data = pd.read_excel(
                 f'analysis/Exercise_Analysis_{exercise_number}/Exercise_{exercise_number}_Results.xlsx',
                 engine='openpyxl')
-            data = data[:176]
+            data = data[:len(data) - 3]
             ip_number = f"Ex{exercise_number}"
 
             for i in range(len(data)):
