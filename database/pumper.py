@@ -2,29 +2,21 @@ import os
 
 import mysql.connector
 import pandas as pd
+import json
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
 __date__ = "2024/03/13"
 __version__ = "1.0.0"
 
+# Load database configuration from a json file
+with open('database/db_config.json', 'r') as config_file:
+    config = json.load(config_file)
+
 
 class MySQLPumper:
-    """
-            host=...,
-            user=...,
-            password=...,
-            database=...
-    """
     def __init__(self):
-        self.connector = mysql.connector.connect(
-            """
-                    host=...,
-                    user=...,
-                    password=...,
-                    database=...
-            """
-        )
+        self.connector = mysql.connector.connect(**config)
         self.mode = ""
         self.exercise_number = 0
         # Needed in pump_exercise method!
