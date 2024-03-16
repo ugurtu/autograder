@@ -21,7 +21,6 @@ HANDIN_PREFIX = "Insurance " # TODO: specify exact hand-in name link prefix (nam
 uname = getpass.getuser()
 
 DOWNLOAD_PATH = f"/home/{uname}/Downloads/" # TODO: adjust downloadpath of selenium firefox browser
-DOWNLOAD_PATH = f"/home/{uname}/Downloads/" # TODO: adjust downloadpath of selenium firefox browser
 
 
 def main(argv):

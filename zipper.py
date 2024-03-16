@@ -2,12 +2,12 @@ import re
 import zipfile
 import os
 import shutil
+import pickle
 
-TYPE = "Insurance"
+TYPE = "Exercise"
 NR = "2"
 
 student_points = {}
-
 
 # Extracts exactly one zip file, the one that contains the folder structure for ADAM multi-feedback
 def find_and_unzip(zip_folder_path, extract_path):
@@ -34,6 +34,34 @@ def find_and_unzip(zip_folder_path, extract_path):
     else:
         print("Error: No ZIP files found.")
         return None
+    
+# def zip_folder(folder_path, output_path):
+#     with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+#         len_dir_path = len(folder_path)
+#         for root, _, files in os.walk(folder_path):
+#             for file in files:
+#                 file_path = os.path.join(root, file)
+#                 zipf.write(file_path, file_path[len_dir_path:])
+    
+def zip_folder(folder_path, output_path):
+    # Get the absolute path of the folder
+    abs_folder_path = os.path.abspath(folder_path)
+    # Extract the folder name to include in the zip
+    folder_name = os.path.basename(abs_folder_path)
+    # Calculate parent directory to construct correct paths within the zip
+    parent_dir = os.path.dirname(abs_folder_path)
+    
+    with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(abs_folder_path):
+            # Construct the correct path for files in the zip
+            for file in files:
+                file_path = os.path.join(root, file)
+                # Construct the archive path, including the folder name
+                archive_path = os.path.relpath(file_path, parent_dir)
+                zipf.write(file_path, archive_path)
+                
+    print(f"Folder '{folder_name}' has been zipped as '{output_path}'")
+
     
 def extract_insurance_points(filename):
     # open feedback file and take 2nd to last line
@@ -77,6 +105,7 @@ def match_and_copy_files(path1, path2):
                 # Copy the text file into the corresponding folder in PATH1
                 # destination_path = os.path.join(folder_path, expected_text_file_name)
                 destination_path = os.path.join(folder_path, f"{TYPE}-{NR}-feedback-{points}pts.txt")
+                # destination_path = os.path.join(folder_path, "feedback.txt")
                 shutil.copyfile(expected_text_file_path, destination_path)
                 print(f"Copied {expected_text_file_name} to {folder_path}")
             else:
@@ -91,14 +120,17 @@ zip_file_name = find_and_unzip(zip_folder_path, extract_path)
 if zip_file_name:
     print(f"The extracted ZIP file's name is: {zip_file_name}")
 
-# Example usage
-path1 = f'../autograder/{zip_file_name[:-4]}'  # Replace PATH1 with the actual path
-path2 = f'../autograder/analysis/{TYPE}_Analysis_{NR}/Feedback_{TYPE} 2'  # Replace PATH2 with the actual path
-match_and_copy_files(path1, path2)
+unzipped_folder_structure_path = f'../autograder/{zip_file_name[:-4]}'  # Replace PATH1 with the actual path
+feedback_folder_path = f'../autograder/analysis/{TYPE}_Analysis_{NR}/Feedback_{TYPE} 2'  # Replace PATH2 with the actual path
+match_and_copy_files(unzipped_folder_structure_path, feedback_folder_path)
 
-# print(student_points)
-# print(len(student_points))
+# folder_path = 'path/to/your/folder'
+# output_path = 'your_archive.zip'
+zip_folder(unzipped_folder_structure_path, f"{unzipped_folder_structure_path}2.zip")
 
 
+# Serialize and save the dictionary to a file
+with open('student_points.pkl', 'wb') as file:
+    pickle.dump(student_points, file)
 
-# extracted_number
+print("Dictionary with student points has been saved.")

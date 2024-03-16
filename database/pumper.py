@@ -10,7 +10,7 @@ __date__ = "2024/03/13"
 __version__ = "1.0.0"
 
 # Load database configuration from a json file
-with open('db_config.json', 'r') as config_file:
+with open('database/db_config.json', 'r') as config_file:
     config = json.load(config_file)
 
 
