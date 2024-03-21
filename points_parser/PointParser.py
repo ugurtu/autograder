@@ -1,4 +1,5 @@
 import re
+import os
 
 __author__ = "Ugur Turhal", "Mark Starzynski"
 __email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
@@ -14,8 +15,20 @@ class PointParser:
     def __init__(self):
         self.max_points = 0
 
+    def get_questions(self):
+        print(os.getcwd())
+        list_of_files = []
+        for filename in os.listdir('tests'):
+            # Check if the file is a Python file
+            if filename.endswith('.py'):
+                # Construct the full path to the file
+                list_of_files.append(filename.replace('.py', ''))
+
+        return list_of_files
+        # Open and read the file content
+
     def question_parser(self, question_number):
-        with open(f'../autograder/tests/Question {question_number}.py', 'r') as file:
+        with open(f'tests/{question_number}.py', 'r') as file:
             script_content = file.read()
 
         # Use regular expression to find the points value
