@@ -37,6 +37,17 @@ class MySQLPumper:
                 e_mail = data[f"E-Mail"][i]
                 points = float(data[ip_number][i])
                 cursor = self.connector.cursor()
+
+                query = "SELECT * FROM Exercises WHERE email = %s"
+                cursor.execute(query, (e_mail,))
+                result = cursor.fetchone()
+
+                if result is None:
+                    # If the email does not exist, insert it into the database
+                    insert_query = "INSERT INTO Exercises (email) VALUES (%s)"
+                    cursor.execute(insert_query, (e_mail,))
+                    self.connector.commit()  # Commit the insertion
+
                 query = f'UPDATE Exercises SET {ip_number} = %s WHERE email = %s'
                 cursor.execute(query, (points, e_mail))
                 self.connector.commit()
@@ -45,13 +56,23 @@ class MySQLPumper:
             data = pd.read_excel(
                 f'analysis/Exercise_Analysis_{exercise_number}/Exercise_{exercise_number}_Results.xlsx',
                 engine='openpyxl')
-            data = data[:176]
             ip_number = f"Ex{exercise_number}"
 
             for i in range(len(data)):
                 e_mail = data[f"E-Mail"][i]
                 points = int(data[ip_number][i])
                 cursor = self.connector.cursor()
+
+                query = "SELECT * FROM Exercises WHERE email = %s"
+                cursor.execute(query, (e_mail,))
+                result = cursor.fetchone()
+
+                if result is None:
+                    # If the email does not exist, insert it into the database
+                    insert_query = "INSERT INTO Exercises (email) VALUES (%s)"
+                    cursor.execute(insert_query, (e_mail,))
+                    self.connector.commit()  # Commit the insertion
+
                 query = f'UPDATE Exercises SET {ip_number} = %s WHERE email = %s'
                 cursor.execute(query, (points, e_mail))
                 self.connector.commit()
