@@ -97,6 +97,7 @@ class NoteBookGrader:
                 folder_name = os.path.basename(os.path.dirname(notebook))
                 name, family_name, student_email, matriculation_number = "", "", "", ""
                 folder_name = folder_name.split('_')
+                print(f"Grading: {folder_name[0]}, {folder_name[1]}, {folder_name[2]}...")
 
                 if len(folder_name) == 4:
                     name, family_name, student_email, matriculation_number = folder_name

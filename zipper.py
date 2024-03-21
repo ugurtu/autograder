@@ -68,9 +68,12 @@ def extract_insurance_points(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
 
+    print(filename)
     # second_to_last_line = lines[-2] # insurance
-    second_to_last_line = lines[31:-2] # exercise
-
+    second_to_last_line = lines[-2] # exercise
+    print(second_to_last_line)
+    second_to_last_line = second_to_last_line[31:]
+    print(second_to_last_line)
     # pattern looks for any sequence of digits (\d+) possibly followed by a decimal point
     # and more digits. ? makes the decimal point and the following digits optional to
     # allow for whole numbers as well.
@@ -123,7 +126,7 @@ if zip_file_name:
     print(f"The extracted ZIP file's name is: {zip_file_name}")
 
 unzipped_folder_structure_path = f'../autograder/{zip_file_name[:-4]}'  # Replace PATH1 with the actual path
-feedback_folder_path = f'../autograder/analysis/{TYPE}_Analysis_{NR}/Feedback_{TYPE} 2'  # Replace PATH2 with the actual path
+feedback_folder_path = f'../autograder/analysis/{TYPE}_Analysis_{NR}/Feedback_{TYPE} {NR}'  # Replace PATH2 with the actual path
 match_and_copy_files(unzipped_folder_structure_path, feedback_folder_path)
 
 # folder_path = 'path/to/your/folder'
@@ -135,4 +138,6 @@ zip_folder(unzipped_folder_structure_path, f"{unzipped_folder_structure_path}2.z
 with open('student_points.pkl', 'wb') as file:
     pickle.dump(student_points, file)
 
+print(student_points)
 print("Dictionary with student points has been saved.")
+
