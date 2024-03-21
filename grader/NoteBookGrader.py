@@ -64,9 +64,14 @@ class NoteBookGrader:
             """
             point = PointParser()
 
-            for i in range(1, num_files + 1):
-                header_row.append(f'Question {i}')
-                self.question_points[f"Question {i}"] = point.question_parser(i)
+
+            # ! TODO: iterators need to be parsed directly from the file names, the list is just a dirty quickfix
+            question_iterators = ['1', '2a', '2b', '2c', '2d', '2e', '3a', '3b', '4a', '4b', '4c', '5', '6']	
+            
+            # for i in range(1, self.number_of_questions + 1):
+            for iter in question_iterators:
+                header_row.append(f'Question {iter}')
+                self.question_points[f"Question {iter}"] = point.question_parser(iter)
             # print(self.question_points)
             max_points = 0
 
@@ -133,8 +138,10 @@ class NoteBookGrader:
                 # os.chdir(current_directory)
 
                 # Extract the grade from the output for each question
-                for i in range(1, self.number_of_questions + 1):
-                    pattern_failed = fr'Question {i} - \d+ result:\s+❌ Test case failed.+'
+                # ! TODO: see line 72; iterators need to be parsed directly from the file names, the list is just a dirty quickfix
+                # for i in range(1, self.number_of_questions + 1):
+                for iter in question_iterators:
+                    pattern_failed = fr'Question {iter} - \d+ result:\s+❌ Test case failed.+'
                     match_failed = re.search(pattern_failed, output)
                     if match_failed:
                         notebook_grades.append(0)
@@ -142,14 +149,14 @@ class NoteBookGrader:
                         # Check if "All tests passed!" pattern is found
                         if "All tests passed!" in output:
 
-                            points = self.question_points[f'Question {i}']
+                            points = self.question_points[f'Question {iter}']
                             notebook_grades.append(points)
                         else:
                             # Check if specific question pattern is found
-                            pattern_passed = fr'Question {i} results: All test cases passed!'
+                            pattern_passed = fr'Question {iter} results: All test cases passed!'
                             match_passed = re.search(pattern_passed, output)
                             if match_passed:
-                                points = self.question_points[f'Question {i}']
+                                points = self.question_points[f'Question {iter}']
                                 notebook_grades.append(points)
                             else:
                                 notebook_grades.append(0)
