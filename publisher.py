@@ -18,9 +18,9 @@ import pickle
 COURSEPAGE = "https://adam.unibas.ch/goto_adam_crs_1688235.html" # TODO: specify ADAM coursesite
 COURSE = "'Intro to Data Science'" # TODO: specify course name
 SUBMISSION_TYPE = "Exercises" # TODO: specify exact submission type link name, e.g. "Exercises" or "Exam insurance"
-HANDIN_PREFIX = "Exercise " # TODO: specify exact hand-in name link prefix (name of the hand-in without iterator, e.g. "Exercise sheet " or "Insurance ", be mindful of the extra space at the end)
+HANDIN_PREFIX = "Exercise sheet " # TODO: specify exact hand-in name link prefix (name of the hand-in without iterator, e.g. "Exercise sheet " or "Insurance ", be mindful of the extra space at the end)
 
-TOTAL_POINTS = 1 # TODO: Total points of insurance exam or exercise
+TOTAL_POINTS = 15 # TODO: Total points of insurance exam or exercise
 
 # This is more flexible than doing a final username!
 uname = getpass.getuser()
@@ -71,11 +71,16 @@ def main(argv):
 
     # select Exercise sheet in dropdown menu based on <nr> argument
     if NR > 1:
-        select_element = driver.find_element(By.ID, "ass_id")
-        select_object = Select(select_element)
-        select_object.select_by_visible_text(SUBMISSION_NAME)
-        button = driver.find_element(By.NAME, "cmd[selectAssignment]")
-        button.click()
+        print("1")
+        success = wait_for(driver, "il_mhead_t_focus")
+        print("2")
+        # select_element = driver.find_element(By.ID, "ass_id")
+        print("3")
+
+        # select_object = Select(select_element)
+        # select_object.select_by_visible_text(SUBMISSION_NAME)
+        # button = driver.find_element(By.NAME, "cmd[selectAssignment]")
+        # button.click()
 
         success = wait_for(driver, "il_mhead_t_focus")
         if not success:
@@ -127,7 +132,7 @@ def main(argv):
                 print(f"passed: {student_mail}" )
                 select_element = Select(email_element.find_element(By.XPATH, ".//td/select[contains(@name, 'status')]"))
                 select_element.select_by_value("passed")  # Set to "Bestanden"
-            elif student_points[student_mail] == 0:
+            elif student_points[student_mail]/TOTAL_POINTS <= 0.33:
                 print(f"failed: {student_mail}" )
                 select_element = Select(email_element.find_element(By.XPATH, ".//td/select[contains(@name, 'status')]"))
                 select_element.select_by_value("failed")  # Set to "Nicht Bestanden"
