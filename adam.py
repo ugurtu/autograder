@@ -14,8 +14,8 @@ import getpass
 
 COURSEPAGE = "https://adam.unibas.ch/goto_adam_crs_1688235.html" # TODO: specify ADAM coursesite
 COURSE = "'Intro to Data Science'" # TODO: specify course name
-SUBMISSION_TYPE = "Exam Insurance" # TODO: specify exact submission type link name, e.g. "Exercises" or "Exam insurance"
-HANDIN_PREFIX = "Insurance " # TODO: specify exact hand-in name link prefix (name of the hand-in without iterator, e.g. "Exercise sheet " or "Insurance ", be mindful of the extra space at the end)
+SUBMISSION_TYPE = "Exercises" # TODO: specify exact submission type link name, e.g. "Exercises" or "Exam insurance"
+HANDIN_PREFIX = "Exercise sheet " # TODO: specify exact hand-in name link prefix (name of the hand-in without iterator, e.g. "Exercise sheet " or "Insurance ", be mindful of the extra space at the end)
 
 # This is more flexible than doing a final username!
 uname = getpass.getuser()

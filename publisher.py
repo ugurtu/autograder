@@ -20,7 +20,7 @@ COURSE = "'Intro to Data Science'" # TODO: specify course name
 SUBMISSION_TYPE = "Exercises" # TODO: specify exact submission type link name, e.g. "Exercises" or "Exam insurance"
 HANDIN_PREFIX = "Exercise sheet " # TODO: specify exact hand-in name link prefix (name of the hand-in without iterator, e.g. "Exercise sheet " or "Insurance ", be mindful of the extra space at the end)
 
-TOTAL_POINTS = 15 # TODO: Total points of insurance exam or exercise
+TOTAL_POINTS = 17 # TODO: Total points of insurance exam or exercise
 
 # This is more flexible than doing a final username!
 uname = getpass.getuser()
