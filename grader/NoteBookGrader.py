@@ -8,10 +8,11 @@ from analysis.Analysis import InsuranceAnalysis
 from xls.ExcelParser import ExcelParser
 from points_parser.PointParser import PointParser
 from database.pumper import MySQLPumper
+
 # from localdb.WriterDataBaseOffline import WriterDataBaseOffline
 
-__author__ = "Ugur Turhal","Mark Starzynski"
-__email__ = "ugur.turhal@unibas.ch","mark.starzynski@unibas.ch"
+__author__ = "Ugur Turhal", "Mark Starzynski"
+__email__ = "ugur.turhal@unibas.ch", "mark.starzynski@unibas.ch"
 __date__ = "2024/03/13"
 __version__ = "1.0.0"
 
@@ -62,16 +63,15 @@ class NoteBookGrader:
             Parse the points here we use the class
             PointParser. Then iterate through a 
             """
+            questions = PointParser()
+            question_iterators = questions.get_questions()
+
             point = PointParser()
 
-
-            # ! TODO: iterators need to be parsed directly from the file names, the list is just a dirty quickfix
-            question_iterators = ['1', '2a', '2b', '2c', '2d', '2e', '3a', '3b', '4a', '4b', '4c', '5', '6']	
-            
             # for i in range(1, self.number_of_questions + 1):
             for iter in question_iterators:
-                header_row.append(f'Question {iter}')
-                self.question_points[f"Question {iter}"] = point.question_parser(iter)
+                header_row.append(f'{iter}')
+                self.question_points[f"{iter}"] = point.question_parser(iter)
             # print(self.question_points)
             max_points = 0
 
@@ -118,9 +118,13 @@ class NoteBookGrader:
                 # other methods will produce a big bottleneck.
                 # this is efficient and fast.
                 pattern = r'(Verspaetete Abgabe - )'
-
+                pattern2 = r'\s*\((.*?)\)'
                 # Replace the pattern with backslashes
                 notebook = re.sub(pattern, r'Verspaetete\\ Abgabe\\ -\ ', notebook)
+                print(notebook)
+                # Ensures that: (1) is replaced with \(1\) and (2) with \(2\)
+                notebook = re.sub(pattern2, r'\\ \(\1\)', notebook)
+
                 # Execute the otter check command
                 command = f'otter check {notebook}'
                 output = subprocess.check_output(command, shell=True, encoding='utf-8')
@@ -141,7 +145,7 @@ class NoteBookGrader:
                 # ! TODO: see line 72; iterators need to be parsed directly from the file names, the list is just a dirty quickfix
                 # for i in range(1, self.number_of_questions + 1):
                 for iter in question_iterators:
-                    pattern_failed = fr'Question {iter} - \d+ result:\s+❌ Test case failed.+'
+                    pattern_failed = fr'{iter} + result:\s+❌ Test case failed.+'
                     match_failed = re.search(pattern_failed, output)
                     if match_failed:
                         notebook_grades.append(0)
@@ -149,14 +153,14 @@ class NoteBookGrader:
                         # Check if "All tests passed!" pattern is found
                         if "All tests passed!" in output:
 
-                            points = self.question_points[f'Question {iter}']
+                            points = self.question_points[f'{iter}']
                             notebook_grades.append(points)
                         else:
                             # Check if specific question pattern is found
-                            pattern_passed = fr'Question {iter} results: All test cases passed!'
+                            pattern_passed = fr'{iter} results: All test cases passed!'
                             match_passed = re.search(pattern_passed, output)
                             if match_passed:
-                                points = self.question_points[f'Question {iter}']
+                                points = self.question_points[f'{iter}']
                                 notebook_grades.append(points)
                             else:
                                 notebook_grades.append(0)
