@@ -4,8 +4,8 @@ import os
 import shutil
 import pickle
 
-TYPE = "Exercise"
-NR = "3"
+TYPE = "Insurance"
+NR = "4"
 
 student_points = {}
 
@@ -69,16 +69,19 @@ def extract_insurance_points(filename):
         lines = file.readlines()
 
     print(filename)
-    # second_to_last_line = lines[-2] # insurance
-    second_to_last_line = lines[-2] # exercise
-    print(second_to_last_line)
-    second_to_last_line = second_to_last_line[31:]
-    print(second_to_last_line)
+    second_to_last_line = lines[-2] # insurance
+
+    # second_to_last_line = lines[-2] # exercise
+    # second_to_last_line = second_to_last_line[31:]
+
+
     # pattern looks for any sequence of digits (\d+) possibly followed by a decimal point
     # and more digits. ? makes the decimal point and the following digits optional to
     # allow for whole numbers as well.
-    # match = re.search(r"(\d+\.\d+)", second_to_last_line) # insurance
-    match = re.search(r"(\d+(?:\.\d+)?)", second_to_last_line) # exercise
+    
+    match = re.search(r"(\d+\.\d+)", second_to_last_line) # insurance
+    # match = re.search(r"(\d+(?:\.\d+)?)", second_to_last_line) # exercise
+    
     if match:
         return float(match.group(1))
     else:
