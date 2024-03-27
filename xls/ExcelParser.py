@@ -23,7 +23,7 @@ class ExcelParser:
         self.exercise_number = exercise_number
         self.mode = mode
         os.chdir("../..")
-        self.file_path = 'xls/exercise-and-insurance-points.xls'
+        self.file_path = 'xls/exercise-and-insurance-points.xlsx'
 
     def get_data(self) -> pd.DataFrame:
         xls = pd.ExcelFile(self.file_path)
